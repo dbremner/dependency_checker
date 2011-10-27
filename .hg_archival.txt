@@ -1,5 +1,0 @@
-repo: 29b880d8d5bbdd43ab34246efa0a8ca4bf79b00b
-node: 9b8542a1c221309fcb1b7328d374faa00ebe8773
-branch: stash
-latesttag: null
-latesttagdistance: 17
