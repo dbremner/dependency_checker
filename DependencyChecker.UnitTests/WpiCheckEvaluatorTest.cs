@@ -47,9 +47,8 @@ namespace DependencyChecker.UnitTests
             var evaluator = new WpiCheckEvaluator();
             evaluator.ProductManager = productManager;
             var check = new Check { CheckType = "WPI", Value = "MySQL" };
-            IEvaluationContext nullContext = null;
-            
-            bool evaluate = evaluator.Evaluate(check, nullContext);
+
+            bool evaluate = evaluator.Evaluate(check, null);
 
             Assert.IsFalse(evaluate);
         }
@@ -60,9 +59,8 @@ namespace DependencyChecker.UnitTests
             var evaluator = new WpiCheckEvaluator();
             evaluator.ProductManager = productManager;
             var check = new Check { CheckType = "WPIRuntime", Value = "WIFRuntime" };
-            IEvaluationContext nullContext = null;
 
-            bool evaluate = evaluator.Evaluate(check, nullContext);
+            bool evaluate = evaluator.Evaluate(check, null);
 
             Assert.IsTrue(evaluate);
         }
@@ -73,9 +71,8 @@ namespace DependencyChecker.UnitTests
             WpiCheckEvaluator evaluator = new WpiCheckEvaluator();
             evaluator.ProductManager = productManager;
             Check check = new Check { CheckType = "WPISDK", Value = "WIFSDK" };
-            IEvaluationContext nullContext = null;
-            
-            Assert.IsTrue(evaluator.Evaluate(check, nullContext));
+
+            Assert.IsTrue(evaluator.Evaluate(check, null));
         }
 
         [TestMethod]
@@ -84,9 +81,8 @@ namespace DependencyChecker.UnitTests
             WpiCheckEvaluator evaluator = new WpiCheckEvaluator();
             evaluator.ProductManager = productManager;
             Check check = new Check { CheckType = "WCFHTTP", Value = "WCFHTTP" };
-            IEvaluationContext nullContext = null;
 
-            Assert.IsTrue(evaluator.Evaluate(check, nullContext));
+            Assert.IsTrue(evaluator.Evaluate(check, null));
         }
 
         [TestMethod]
@@ -95,9 +91,8 @@ namespace DependencyChecker.UnitTests
             WpiCheckEvaluator evaluator = new WpiCheckEvaluator();
             evaluator.ProductManager = productManager;
             Check check = new Check { CheckType = "IIS7CGCC", Value = "IIS7CGCC" };
-            IEvaluationContext nullContext = null;
 
-            Assert.IsTrue(evaluator.Evaluate(check, nullContext));
+            Assert.IsTrue(evaluator.Evaluate(check, null));
         }
 
         [TestMethod]
@@ -106,9 +101,8 @@ namespace DependencyChecker.UnitTests
             WpiCheckEvaluator evaluator = new WpiCheckEvaluator();
             evaluator.ProductManager = productManager;
             Check check = new Check { CheckType = "WindowsAzureToolsVS2010", Value = "WindowsAzureToolsVS2010" };
-            IEvaluationContext nullContext = null;
 
-            Assert.IsTrue(evaluator.Evaluate(check, nullContext));
+            Assert.IsTrue(evaluator.Evaluate(check, null));
         }
     }
 }

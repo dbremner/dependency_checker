@@ -22,8 +22,7 @@ namespace DependencyChecker.UnitTests
         {
             CertificateCheckEvaluator evaluator = new CertificateCheckEvaluator();
             Check check = new Check { Name = "Certficate", Value = "LocalMachine,My,CN=adatum" };
-            IEvaluationContext nullContext = null;
-            Assert.IsTrue(evaluator.Evaluate(check, nullContext));
+            Assert.IsTrue(evaluator.Evaluate(check, null));
         }
 
         [TestMethod]
@@ -31,8 +30,7 @@ namespace DependencyChecker.UnitTests
         {
             CertificateCheckEvaluator evaluator = new CertificateCheckEvaluator();
             Check check = new Check { Name = "Certficate", Value = "LocalMachine,My,CN=noExist" };
-            IEvaluationContext nullContext = null;
-            Assert.IsFalse(evaluator.Evaluate(check, nullContext));
+            Assert.IsFalse(evaluator.Evaluate(check, null));
         }
     }
 }
