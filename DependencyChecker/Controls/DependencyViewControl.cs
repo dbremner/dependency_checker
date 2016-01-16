@@ -46,6 +46,7 @@ namespace DependencyChecker.Controls
 
         public void SetDependency(Dependency dependencyToEvalulate, IEvaluationContext context)
         {
+            if (dependencyToEvalulate == null) throw new ArgumentNullException(nameof(dependencyToEvalulate));
             this.dependency = dependencyToEvalulate;
 
             this.dependsOnTitle = "The following items must be installed before this one:";

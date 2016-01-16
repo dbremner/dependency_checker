@@ -8,6 +8,7 @@
 //===============================================================================
 
 
+using System;
 using DependencyChecker.Common;
 
 namespace DependencyChecker.CheckEvaluators
@@ -16,6 +17,7 @@ namespace DependencyChecker.CheckEvaluators
     {
         public bool Evaluate(Check check, IEvaluationContext context)
         {
+            if (check == null) throw new ArgumentNullException(nameof(check));
             return System.IO.File.Exists(check.Value);
         }
     }

@@ -8,6 +8,8 @@
 //===============================================================================
 
 
+using System;
+
 namespace DependencyChecker.UnitTests
 {
     using System.Collections.Generic;
@@ -36,6 +38,7 @@ namespace DependencyChecker.UnitTests
 
         public bool Evaluate(Check check, IEvaluationContext context)
         {
+            if (check == null) throw new ArgumentNullException(nameof(check));
             this.hitsPerCheck[check.Name]++;
             return this.returnValues[check.Name];
         }

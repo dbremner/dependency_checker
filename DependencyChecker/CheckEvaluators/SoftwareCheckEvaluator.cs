@@ -8,6 +8,7 @@
 //===============================================================================
 
 
+using System;
 using DependencyChecker.CheckEvaluators.Helpers;
 using DependencyChecker.Common;
 
@@ -19,6 +20,7 @@ namespace DependencyChecker.CheckEvaluators
     {
         public bool Evaluate(Check check, IEvaluationContext context)
         {
+            if (check == null) throw new ArgumentNullException(nameof(check));
             return 
                 RegistryHelper.IsInKey(
                     @"SOFTWARE\microsoft\Windows\CurrentVersion\Uninstall", 

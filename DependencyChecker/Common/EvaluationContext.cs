@@ -43,6 +43,7 @@ namespace DependencyChecker.Common
 
         public bool Evaluate(Check check)
         {
+            if (check == null) throw new ArgumentNullException(nameof(check));
             return this.GetEvaluatorForCheckType(check.CheckType).Evaluate(check, this);
         }
 

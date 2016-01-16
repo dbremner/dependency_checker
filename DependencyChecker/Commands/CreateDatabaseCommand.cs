@@ -26,6 +26,7 @@ namespace DependencyChecker.Commands
 
         public void Execute(Dependency dependency)
         {
+            if (dependency == null) throw new ArgumentNullException(nameof(dependency));
             var settings = dependency.Settings
                 .Split('!')
                 .Where(pair => pair.IndexOf('=') < pair.Length - 1)

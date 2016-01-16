@@ -31,6 +31,7 @@ namespace DependencyChecker.Commands
 
         public void Execute(Dependency dependency)
         {
+            if (dependency == null) throw new ArgumentNullException(nameof(dependency));
             string appPoolUserName = CertificateCommon.GetAppPoolUserName();
             string networkServiceUserName = CertificateCommon.GetNetworkServiceUser();
             var certs = dependency.Settings.Split('!');

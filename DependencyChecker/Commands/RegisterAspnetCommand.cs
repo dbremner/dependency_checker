@@ -8,6 +8,7 @@
 //===============================================================================
 
 
+using System;
 using DependencyChecker.Common;
 using DependencyChecker.SystemIntegration;
 
@@ -28,6 +29,7 @@ namespace DependencyChecker.Commands
 
         public void Execute(Dependency dependency)
         {
+            if (dependency == null) throw new ArgumentNullException(nameof(dependency));
             dependency.Settings = "/iu:NetFx3;WCF-HTTP-Activation";
 
             var pkgMgrCmd = new PkgMgrCommand();
