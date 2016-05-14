@@ -24,7 +24,6 @@ namespace DependencyChecker.Controls
         private readonly IErrorService errorService;
         private readonly IMessageService messageService;
         private readonly ProductManager productManager;
-        private Collection<Dependency> dependencies;
 
         public DependencyGroupView(IErrorService errorService, IMessageService messageService, ProductManager productManager)
         {
@@ -35,11 +34,7 @@ namespace DependencyChecker.Controls
             this.SetStyle(ControlStyles.ResizeRedraw, true);
         }
 
-        public Collection<Dependency> Dependencies
-        {
-            get { return this.dependencies; }
-            set { this.dependencies = value; }
-        }
+        public Collection<Dependency> Dependencies { get; set; }
 
         public string Heading
         {
@@ -49,11 +44,11 @@ namespace DependencyChecker.Controls
 
         public bool AddDependency(Dependency dependency, IEvaluationContext context)
         {
-            if (this.dependencies == null)
+            if (this.Dependencies == null)
             {
-                this.dependencies = new Collection<Dependency>();
+                this.Dependencies = new Collection<Dependency>();
             }
-            this.dependencies.Add(dependency);
+            this.Dependencies.Add(dependency);
 
             int controlNumber = this.flowLayoutPanel1.Controls.Count + 1;
             var newControl = new DependencyViewControl(this.errorService, this.messageService, this.productManager);
@@ -68,7 +63,7 @@ namespace DependencyChecker.Controls
 
         public void Reset()
         {
-            this.dependencies = null;
+            this.Dependencies = null;
             this.flowLayoutPanel1.Controls.Clear();
         }
 

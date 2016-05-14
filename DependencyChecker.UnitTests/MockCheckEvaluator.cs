@@ -17,38 +17,29 @@ namespace DependencyChecker.UnitTests
 
     public class MockCheckEvaluator : ICheckEvaluator
     {
-        private readonly IDictionary<string, int> hitsPerCheck;
-        private readonly IDictionary<string, bool> returnValues;
-
         public MockCheckEvaluator()
         {
-            this.returnValues = new Dictionary<string, bool>();
-            this.hitsPerCheck = new Dictionary<string, int>();
+            this.ReturnValues = new Dictionary<string, bool>();
+            this.HitsPerCheck = new Dictionary<string, int>();
         }
 
-        public IDictionary<string, int> HitsPerCheck
-        {
-            get { return this.hitsPerCheck; }
-        }
+        public IDictionary<string, int> HitsPerCheck { get; }
 
-        public IDictionary<string, bool> ReturnValues
-        {
-            get { return this.returnValues; }
-        }
+        public IDictionary<string, bool> ReturnValues { get; }
 
         public bool Evaluate(Check check, IEvaluationContext context)
         {
             if (check == null) throw new ArgumentNullException(nameof(check));
-            this.hitsPerCheck[check.Name]++;
-            return this.returnValues[check.Name];
+            this.HitsPerCheck[check.Name]++;
+            return this.ReturnValues[check.Name];
         }
 
         public void ResetHitsPerCheck()
         {
-            this.hitsPerCheck.Clear();
-            foreach (string name in this.returnValues.Keys)
+            this.HitsPerCheck.Clear();
+            foreach (string name in this.ReturnValues.Keys)
             {
-                this.hitsPerCheck.Add(name, 0);
+                this.HitsPerCheck.Add(name, 0);
             }
         }
     }

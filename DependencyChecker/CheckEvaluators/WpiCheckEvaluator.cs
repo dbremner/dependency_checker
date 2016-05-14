@@ -17,13 +17,7 @@ namespace DependencyChecker.CheckEvaluators
 
     public class WpiCheckEvaluator : ICheckEvaluator, IRequiresProductManager
     {
-        private ProductManager productManager;
-
-        public ProductManager ProductManager
-        {
-            get { return this.productManager; }
-            set { this.productManager = value; }
-        }
+        public ProductManager ProductManager { get; set; }
 
         public bool Evaluate(Check check, IEvaluationContext context)
         {
@@ -33,7 +27,7 @@ namespace DependencyChecker.CheckEvaluators
 
             foreach (var setting in settings)
             {
-                Product product = this.productManager.GetProduct(setting);
+                Product product = this.ProductManager.GetProduct(setting);
                 ret = product.IsInstalled(false);
                 if (!ret)
                 {

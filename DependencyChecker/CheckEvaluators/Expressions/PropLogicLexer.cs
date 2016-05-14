@@ -28,40 +28,32 @@ namespace DependencyChecker.CheckEvaluators.Expressions
     internal class PropLogicLexer
     {
         private readonly Regex identifierRegex;
-        private LexerTokenType currentTokenType;
-        private string currentTokenValue;
 
         private string source;
 
         public PropLogicLexer(string source)
         {
             this.source = source;
-            this.currentTokenType = LexerTokenType.NotStarted;
-            this.currentTokenValue = null;
+            this.CurrentTokenType = LexerTokenType.NotStarted;
+            this.CurrentTokenValue = null;
             this.identifierRegex = new Regex("^[A-Za-z_][0-9A-Za-z_]*");
         }
 
-        public LexerTokenType CurrentTokenType
-        {
-            get { return this.currentTokenType; }
-        }
+        public LexerTokenType CurrentTokenType { get; private set; }
 
-        public string CurrentTokenValue
-        {
-            get { return this.currentTokenValue; }
-        }
+        public string CurrentTokenValue { get; private set; }
 
         public bool NextToken()
         {
-            if (this.currentTokenType == LexerTokenType.End)
+            if (this.CurrentTokenType == LexerTokenType.End)
             {
                 return false;
             }
             this.EatLeadingWhiteSpace();
             if (this.source.Length == 0)
             {
-                this.currentTokenType = LexerTokenType.End;
-                this.currentTokenValue = string.Empty;
+                this.CurrentTokenType = LexerTokenType.End;
+                this.CurrentTokenValue = string.Empty;
                 return false;
             }
 
@@ -103,8 +95,8 @@ namespace DependencyChecker.CheckEvaluators.Expressions
             Match match = this.identifierRegex.Match(this.source);
             if (match.Success)
             {
-                this.currentTokenType = LexerTokenType.Identifier;
-                this.currentTokenValue = this.source.Substring(0, match.Length);
+                this.CurrentTokenType = LexerTokenType.Identifier;
+                this.CurrentTokenValue = this.source.Substring(0, match.Length);
                 this.source = this.source.Substring(match.Length);
                 return true;
             }
@@ -115,8 +107,8 @@ namespace DependencyChecker.CheckEvaluators.Expressions
         {
             if (this.source.StartsWith(keyword))
             {
-                this.currentTokenType = tokenType;
-                this.currentTokenValue = keyword;
+                this.CurrentTokenType = tokenType;
+                this.CurrentTokenValue = keyword;
                 this.source = this.source.Substring(keyword.Length);
                 return true;
             }

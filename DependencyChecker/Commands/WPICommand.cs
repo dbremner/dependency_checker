@@ -20,25 +20,16 @@ namespace DependencyChecker.Commands
     public class WpiCommand : IDependencySetupCommand, IRequiresProductManager, IDisposable
     {
         private readonly InstallManager installManager;
-        private bool completed;
         private bool iisComponent;
-        private ProductManager productManager;
 
         public WpiCommand()
         {
             this.installManager = new InstallManager();
         }
 
-        public bool Completed
-        {
-            get { return this.completed; }
-        }
+        public bool Completed { get; private set; }
 
-        public ProductManager ProductManager
-        {
-            get { return this.productManager; }
-            set { this.productManager = value; }
-        }
+        public ProductManager ProductManager { get; set; }
 
         public void Dispose()
         {
@@ -55,7 +46,7 @@ namespace DependencyChecker.Commands
             var installers = new Dictionary<string, Installer>();
             foreach (var setting in settings)
             {
-                var product = this.productManager.GetProduct(setting);
+                var product = this.ProductManager.GetProduct(setting);
                 var sets = product.DependencySets.ToList();
                 foreach (var installer in product.Installers)
                 {
@@ -102,7 +93,7 @@ namespace DependencyChecker.Commands
             {
                 (new RegisterAspNetInIIS()).Execute();
             }
-            this.completed = true;
+            this.Completed = true;
         }
     }
 }
