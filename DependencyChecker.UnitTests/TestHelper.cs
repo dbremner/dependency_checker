@@ -15,7 +15,7 @@ namespace DependencyChecker.UnitTests
     using System.Linq;
     using DependencyChecker.Configuration;
 
-    internal sealed class TestHelper
+    internal static class TestHelper
     {
         public static int Count(IEnumerable source)
         {

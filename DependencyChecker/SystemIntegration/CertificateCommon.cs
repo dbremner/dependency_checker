@@ -14,7 +14,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace DependencyChecker.SystemIntegration
 {
-    public class CertificateCommon
+    public static class CertificateCommon
     {
         public static X509Certificate2 GetCertificate(string subject, string storeName, StoreLocation location)
         {
