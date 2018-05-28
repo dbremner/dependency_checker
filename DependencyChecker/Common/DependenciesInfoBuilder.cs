@@ -85,8 +85,7 @@ namespace DependencyChecker.Common
                 var evaluator = Activator.CreateInstance(Type.GetType(checkEvaluator.Type)) as ICheckEvaluator;
                 if (evaluator != null)
                 {
-                    var rpm = evaluator as IRequiresProductManager;
-                    if (rpm != null)
+                    if (evaluator is IRequiresProductManager rpm)
                     {
                         rpm.ProductManager = this.productManager;
                     }

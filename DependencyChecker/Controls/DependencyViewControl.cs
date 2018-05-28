@@ -257,8 +257,7 @@ namespace DependencyChecker.Controls
         {
             var cmdType = this.dependency.ScriptName.Split(':')[1];
             var command = Activator.CreateInstance(Type.GetType(cmdType)) as IDependencySetupCommand;
-            var rpm = command as IRequiresProductManager;
-            if (rpm != null)
+            if (command is IRequiresProductManager rpm)
             {
                 rpm.ProductManager = this.productManager;
             }
