@@ -6,7 +6,7 @@
 // This code released under the terms of the 
 // Microsoft patterns & practices license (http://dependencychecker.codeplex.com/license)
 //===============================================================================
-
+using System.Windows.Forms;
 
 namespace DependencyChecker.Services
 {
@@ -16,11 +16,11 @@ namespace DependencyChecker.Services
 
         public void ShowMessage(string message)
         {
-            System.Windows.Forms.MessageBox.Show(
+            MessageBox.Show(
                 message, 
-                MessageTitle, 
-                System.Windows.Forms.MessageBoxButtons.OK, 
-                System.Windows.Forms.MessageBoxIcon.Information);
+                MessageTitle,
+                MessageBoxButtons.OK, 
+                MessageBoxIcon.Information);
         }
     }
 }
