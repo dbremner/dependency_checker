@@ -155,7 +155,7 @@ namespace DependencyChecker.SystemIntegration
         public static bool ExistsDb(string sqlServerName, string dbName)
         {
             var db = dbName;
-            object name = null;
+            object name;
 
             try
             {
@@ -192,7 +192,7 @@ namespace DependencyChecker.SystemIntegration
         protected string GetSqlText(string scriptName)
         {
             string sqlScriptFilePath = Path.Combine(@".\SqlScripts", scriptName);
-            var cmd = string.Empty;
+            string cmd;
 
             using (var scriptReader = new StreamReader(sqlScriptFilePath))
             {
