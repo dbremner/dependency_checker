@@ -3,7 +3,7 @@
 // Dependency Checker
 //===============================================================================
 // Copyright © Microsoft Corporation.  All rights reserved.
-// This code released under the terms of the 
+// This code released under the terms of the
 // Microsoft patterns & practices license (http://dependencychecker.codeplex.com/license)
 //===============================================================================
 
@@ -96,7 +96,7 @@ namespace DependencyChecker.Controls
                     if (dependencyToEvalulate.RequiredDependencies != null && dependencyToEvalulate.RequiredDependencies.Count > 0)
                     {
                         var deps = this.GetItemDependencies(dependencyToEvalulate, context);
-                        
+
                         if (!string.IsNullOrEmpty(deps))
                         {
                             this.toolTip1.SetToolTip(this.lblDependsOn, deps);
@@ -178,7 +178,7 @@ namespace DependencyChecker.Controls
                     this.lblExplanation.Text = errorMessage;
                     this.toolTip1.SetToolTip(this.lblExplanation, errorMessage);
                 }
-            
+
                 this.errorService.LogError(errorMessage, exception);
             }
         }

@@ -3,7 +3,7 @@
 // Dependency Checker
 //===============================================================================
 // Copyright © Microsoft Corporation.  All rights reserved.
-// This code released under the terms of the 
+// This code released under the terms of the
 // Microsoft patterns & practices license (http://dependencychecker.codeplex.com/license)
 //===============================================================================
 
@@ -45,7 +45,7 @@ namespace DependencyChecker.CheckEvaluators
                 return true;
             }
 
-            return CheckFullControlAccessToCertificate(certificate, CertificateCommon.GetAppPoolUserName()) && 
+            return CheckFullControlAccessToCertificate(certificate, CertificateCommon.GetAppPoolUserName()) &&
                 CheckFullControlAccessToCertificate(certificate, CertificateCommon.GetNetworkServiceUser());
         }
 
@@ -57,7 +57,7 @@ namespace DependencyChecker.CheckEvaluators
             {
                 return false;
             }
-            
+
             string keyfilepath =
                 CertificateCommon.FindKeyLocation(rsa.CspKeyContainerInfo.UniqueKeyContainerName);
 
@@ -67,11 +67,11 @@ namespace DependencyChecker.CheckEvaluators
             var accessRules = file.GetAccessControl().GetAccessRules(true, true, typeof(NTAccount)).Cast<FileSystemAccessRule>();
             var fullControlRule =
                 accessRules.SingleOrDefault(
-                    r => 
+                    r =>
                         r.IdentityReference.Value == user &&
-                        r.AccessControlType == AccessControlType.Allow && 
+                        r.AccessControlType == AccessControlType.Allow &&
                         r.FileSystemRights == FileSystemRights.FullControl);
-            
+
             return fullControlRule != null;
         }
 

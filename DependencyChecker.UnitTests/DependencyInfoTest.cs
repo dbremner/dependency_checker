@@ -3,7 +3,7 @@
 // Dependency Checker
 //===============================================================================
 // Copyright © Microsoft Corporation.  All rights reserved.
-// This code released under the terms of the 
+// This code released under the terms of the
 // Microsoft patterns & practices license (http://dependencychecker.codeplex.com/license)
 //===============================================================================
 
@@ -63,7 +63,7 @@ namespace DependencyChecker.UnitTests
         [TestMethod]
         public void NonCachedResults()
         {
-            // Just check if expression is analyzed completely. 
+            // Just check if expression is analyzed completely.
             // Non cached results allow rescan with same objects
             DependenciesSection section = TestHelper.GetDependenciesSection();
             MockDependenciesInfoBuilder builder = new MockDependenciesInfoBuilder();
