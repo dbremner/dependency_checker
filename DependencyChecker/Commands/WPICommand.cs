@@ -41,7 +41,10 @@ namespace DependencyChecker.Commands
 
         public void Execute(Dependency dependency)
         {
-            if (dependency == null) throw new ArgumentNullException(nameof(dependency));
+            if (dependency == null)
+            {
+                throw new ArgumentNullException(nameof(dependency));
+            }
             var settings = dependency.Settings.Split('!');
             var installers = new Dictionary<string, Installer>();
             foreach (var setting in settings)

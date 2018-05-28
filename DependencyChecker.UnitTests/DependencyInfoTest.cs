@@ -105,7 +105,10 @@ namespace DependencyChecker.UnitTests
 
             protected override void AddCheckEvaluators(EvaluationContext context, DependencyCheckEvaluatorCollection checkEvaluators)
             {
-                if (context == null) throw new ArgumentNullException(nameof(context));
+                if (context == null)
+                {
+                    throw new ArgumentNullException(nameof(context));
+                }
                 context.SetEvaluatorForCheckType("Registry", this.MockEvaluator);
                 context.SetEvaluatorForCheckType("Software", this.MockEvaluator);
                 context.SetEvaluatorForCheckType("Expression", new ExpressionCheckEvaluator());

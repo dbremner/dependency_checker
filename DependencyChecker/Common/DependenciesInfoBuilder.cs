@@ -33,7 +33,10 @@ namespace DependencyChecker.Common
 
         public DependenciesInfo BuildDependenciesInfo(DependenciesSection configSection, int osBuild)
         {
-            if (configSection == null) throw new ArgumentNullException(nameof(configSection));
+            if (configSection == null)
+            {
+                throw new ArgumentNullException(nameof(configSection));
+            }
             bool supported = TryGetOsBuildNumber(configSection, ref osBuild);
 
             if (!supported)
@@ -69,8 +72,14 @@ namespace DependencyChecker.Common
 
         protected virtual void AddCheckEvaluators(EvaluationContext context, DependencyCheckEvaluatorCollection checkEvaluators)
         {
-            if (context == null) throw new ArgumentNullException(nameof(context));
-            if (checkEvaluators == null) throw new ArgumentNullException(nameof(checkEvaluators));
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+            if (checkEvaluators == null)
+            {
+                throw new ArgumentNullException(nameof(checkEvaluators));
+            }
             foreach (DependencyCheckEvaluator checkEvaluator in checkEvaluators)
             {
                 var evaluator = Activator.CreateInstance(Type.GetType(checkEvaluator.Type)) as ICheckEvaluator;
@@ -88,13 +97,19 @@ namespace DependencyChecker.Common
 
         protected virtual Check GetCheck(DependencyCheck dependencyCheck)
         {
-            if (dependencyCheck == null) throw new ArgumentNullException(nameof(dependencyCheck));
+            if (dependencyCheck == null)
+            {
+                throw new ArgumentNullException(nameof(dependencyCheck));
+            }
             return new Check { CheckType = dependencyCheck.CheckType, Name = dependencyCheck.Name, Value = dependencyCheck.Value };
         }
 
         protected virtual Dependency GetDependency(DependencyElement dependencyElement)
         {
-            if (dependencyElement == null) throw new ArgumentNullException(nameof(dependencyElement));
+            if (dependencyElement == null)
+            {
+                throw new ArgumentNullException(nameof(dependencyElement));
+            }
             var dependency = new Dependency
                                  {
                                      Check = dependencyElement.Check,

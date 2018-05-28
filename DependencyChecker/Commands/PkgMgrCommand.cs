@@ -29,7 +29,10 @@ namespace DependencyChecker.Commands
 
         public void Execute(Dependency dependency)
         {
-            if (dependency == null) throw new ArgumentNullException(nameof(dependency));
+            if (dependency == null)
+            {
+                throw new ArgumentNullException(nameof(dependency));
+            }
             this.Completed = false;
 
             ProcessStartInfo start = this.CreateProcessStartInfo();

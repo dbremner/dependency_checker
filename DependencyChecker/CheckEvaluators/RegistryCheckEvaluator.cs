@@ -20,7 +20,10 @@ namespace DependencyChecker.CheckEvaluators
     {
         public bool Evaluate(Check check, IEvaluationContext context)
         {
-            if (check == null) throw new ArgumentNullException(nameof(check));
+            if (check == null)
+            {
+                throw new ArgumentNullException(nameof(check));
+            }
             string[] configValues = check.Value.Split('|');
             string regPath = configValues[0];
             string reg64Path = configValues[1];

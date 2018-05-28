@@ -17,7 +17,10 @@ namespace DependencyChecker.CheckEvaluators
     {
         public override bool Evaluate(Check check, IEvaluationContext context)
         {
-            if (check == null) throw new ArgumentNullException(nameof(check));
+            if (check == null)
+            {
+                throw new ArgumentNullException(nameof(check));
+            }
             var checks = check.Value.Split('!');
             foreach (var c in checks)
             {

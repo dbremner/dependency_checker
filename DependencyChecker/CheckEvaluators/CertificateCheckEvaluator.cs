@@ -25,7 +25,10 @@ namespace DependencyChecker.CheckEvaluators
     {
         public virtual bool Evaluate(Check check, IEvaluationContext context)
         {
-            if (check == null) throw new ArgumentNullException(nameof(check));
+            if (check == null)
+            {
+                throw new ArgumentNullException(nameof(check));
+            }
             string subject;
             string storeName;
             StoreLocation location;

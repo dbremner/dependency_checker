@@ -29,7 +29,10 @@ namespace DependencyChecker.UnitTests
 
         public bool Evaluate(Check check, IEvaluationContext context)
         {
-            if (check == null) throw new ArgumentNullException(nameof(check));
+            if (check == null)
+            {
+                throw new ArgumentNullException(nameof(check));
+            }
             this.HitsPerCheck[check.Name]++;
             return this.ReturnValues[check.Name];
         }
