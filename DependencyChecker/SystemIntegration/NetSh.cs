@@ -10,7 +10,7 @@ namespace DependencyChecker.SystemIntegration
         public NetSh()
         {
             pathToNetSh = "netsh";
-            
+
         }
 
         public void Execute()

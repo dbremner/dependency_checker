@@ -3,7 +3,7 @@
 // Dependency Checker
 //===============================================================================
 // Copyright © Microsoft Corporation.  All rights reserved.
-// This code released under the terms of the 
+// This code released under the terms of the
 // Microsoft patterns & practices license (http://dependencychecker.codeplex.com/license)
 //===============================================================================
 using System.Windows.Forms;
@@ -17,9 +17,9 @@ namespace DependencyChecker.Services
         public void ShowMessage(string message)
         {
             MessageBox.Show(
-                message, 
+                message,
                 MessageTitle,
-                MessageBoxButtons.OK, 
+                MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
     }

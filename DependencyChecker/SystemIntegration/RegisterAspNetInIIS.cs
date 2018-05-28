@@ -6,7 +6,7 @@ namespace DependencyChecker.SystemIntegration
     public class RegisterAspNetInIIS : WrappedProcessBase
     {
         private readonly string pathToAspnetRegIIS;
-        
+
         public RegisterAspNetInIIS()
         {
             pathToAspnetRegIIS = Environment.ExpandEnvironmentVariables(@"%windir%\Microsoft.NET\Framework\v4.0.30319\aspnet_regiis");

@@ -11,7 +11,7 @@ namespace DependencyChecker.SystemIntegration
         public RegistertAspNetSql()
         {
             pathToAspnetRegSQL = Environment.ExpandEnvironmentVariables(@"%windir%\Microsoft.NET\Framework\v4.0.30319\aspnet_regsql");
-            
+
         }
 
         public void Execute(string connectionString)

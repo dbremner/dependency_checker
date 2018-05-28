@@ -3,7 +3,7 @@
 // Dependency Checker
 //===============================================================================
 // Copyright © Microsoft Corporation.  All rights reserved.
-// This code released under the terms of the 
+// This code released under the terms of the
 // Microsoft patterns & practices license (http://dependencychecker.codeplex.com/license)
 //===============================================================================
 
@@ -15,13 +15,13 @@ namespace DependencyChecker.CheckEvaluators.Expressions
 
     internal enum LexerTokenType
     {
-        NotStarted = 0, 
-        Identifier, 
-        And, 
-        Or, 
-        Not, 
-        OpenParen, 
-        CloseParen, 
+        NotStarted = 0,
+        Identifier,
+        And,
+        Or,
+        Not,
+        OpenParen,
+        CloseParen,
         End
     }
 

@@ -3,7 +3,7 @@
 // Dependency Checker
 //===============================================================================
 // Copyright © Microsoft Corporation.  All rights reserved.
-// This code released under the terms of the 
+// This code released under the terms of the
 // Microsoft patterns & practices license (http://dependencychecker.codeplex.com/license)
 //===============================================================================
 
@@ -82,8 +82,8 @@ namespace DependencyChecker.Commands
             {
                 var message =
                     string.Format(
-                        CultureInfo.InvariantCulture, 
-                        "Unable to access the certificate's private key to assign the required permissions. Certificate name: {0}", 
+                        CultureInfo.InvariantCulture,
+                        "Unable to access the certificate's private key to assign the required permissions. Certificate name: {0}",
                         cert.SubjectName);
                 throw new ApplicationException(message);
             }

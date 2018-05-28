@@ -3,7 +3,7 @@
 // Dependency Checker
 //===============================================================================
 // Copyright © Microsoft Corporation.  All rights reserved.
-// This code released under the terms of the 
+// This code released under the terms of the
 // Microsoft patterns & practices license (http://dependencychecker.codeplex.com/license)
 //===============================================================================
 
@@ -40,7 +40,7 @@ namespace DependencyChecker.UnitTests
         {
             PropExpression e = PropLogicParser.Parse("!Term");
             Assert.IsInstanceOfType(e, typeof(PropNegation));
-            
+
             var en = (PropNegation)e;
 
             Assert.IsInstanceOfType(en.Inner, typeof(PropIdentifier));
@@ -52,7 +52,7 @@ namespace DependencyChecker.UnitTests
         {
             PropExpression e = PropLogicParser.Parse("A && B");
             Assert.IsInstanceOfType(e, typeof(PropConjunction));
-            
+
             var ec = (PropConjunction)e;
             Assert.IsInstanceOfType(ec.Left, typeof(PropIdentifier));
             Assert.IsInstanceOfType(ec.Right, typeof(PropIdentifier));
@@ -77,7 +77,7 @@ namespace DependencyChecker.UnitTests
         public void CanParenthesisIdentifier()
         {
             PropExpression e = PropLogicParser.Parse("(B)");
-            
+
             Assert.IsInstanceOfType(e, typeof(PropIdentifier));
             Assert.AreEqual("B", ((PropIdentifier)e).Name);
         }
@@ -86,7 +86,7 @@ namespace DependencyChecker.UnitTests
         public void CanParseWithMultipleMatchedParentheses()
         {
             PropExpression e = PropLogicParser.Parse("(((Identifier)))");
-            
+
             Assert.IsInstanceOfType(e, typeof(PropIdentifier));
             Assert.AreEqual("Identifier", ((PropIdentifier)e).Name);
         }
@@ -96,7 +96,7 @@ namespace DependencyChecker.UnitTests
         {
             PropExpression e = PropLogicParser.Parse("!(Identifier)");
             Assert.IsInstanceOfType(e, typeof(PropNegation));
-            
+
             var neg = (PropNegation)e;
             Assert.IsInstanceOfType(neg.Inner, typeof(PropIdentifier));
             Assert.AreEqual("Identifier", ((PropIdentifier)neg.Inner).Name);
@@ -107,7 +107,7 @@ namespace DependencyChecker.UnitTests
         {
             PropExpression e = PropLogicParser.Parse("(A || !B) && C");
             Assert.IsInstanceOfType(e, typeof(PropConjunction));
-            
+
             var ec = (PropConjunction)e;
             Assert.IsInstanceOfType(ec.Left, typeof(PropDisjunction));
             Assert.IsInstanceOfType(ec.Right, typeof(PropIdentifier));

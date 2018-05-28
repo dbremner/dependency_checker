@@ -3,7 +3,7 @@
 // Dependency Checker
 //===============================================================================
 // Copyright © Microsoft Corporation.  All rights reserved.
-// This code released under the terms of the 
+// This code released under the terms of the
 // Microsoft patterns & practices license (http://dependencychecker.codeplex.com/license)
 //===============================================================================
 
@@ -45,15 +45,15 @@ namespace DependencyChecker
         private static string BuildMessage(Exception exception)
         {
             return string.Format(
-                    CultureInfo.InvariantCulture, 
-                    "{0}{1}{2}:{3}{4}{5}{6}{7}", 
-                    Line, 
-                    Environment.NewLine, 
+                    CultureInfo.InvariantCulture,
+                    "{0}{1}{2}:{3}{4}{5}{6}{7}",
+                    Line,
+                    Environment.NewLine,
                     exception.GetType().Name,
-                    exception.Message, 
-                    Environment.NewLine, 
-                    exception.StackTrace, 
-                    Environment.NewLine, 
+                    exception.Message,
+                    Environment.NewLine,
+                    exception.StackTrace,
+                    Environment.NewLine,
                     Line);
         }
     }
