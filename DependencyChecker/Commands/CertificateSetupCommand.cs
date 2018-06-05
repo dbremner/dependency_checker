@@ -72,22 +72,20 @@ namespace DependencyChecker.Commands
                         cert.SubjectName);
                 throw new ApplicationException(message);
             }
-            else
-            {
-                string keyfilepath =
-                    CertificateCommon.FindKeyLocation(rsa.CspKeyContainerInfo.UniqueKeyContainerName);
 
-                var file = new FileInfo(keyfilepath + "\\" +
-                                        rsa.CspKeyContainerInfo.UniqueKeyContainerName);
+            string keyfilepath =
+                CertificateCommon.FindKeyLocation(rsa.CspKeyContainerInfo.UniqueKeyContainerName);
 
-                FileSecurity fs = file.GetAccessControl();
+            var file = new FileInfo(keyfilepath + "\\" +
+                                    rsa.CspKeyContainerInfo.UniqueKeyContainerName);
 
-                var account = new NTAccount(user);
-                fs.AddAccessRule(new FileSystemAccessRule(account, FileSystemRights.FullControl,
-                    AccessControlType.Allow));
+            FileSecurity fs = file.GetAccessControl();
 
-                file.SetAccessControl(fs);
-            }
+            var account = new NTAccount(user);
+            fs.AddAccessRule(new FileSystemAccessRule(account, FileSystemRights.FullControl,
+                AccessControlType.Allow));
+
+            file.SetAccessControl(fs);
         }
 
         private static void ImportCer(string cerPath, string storeName)
