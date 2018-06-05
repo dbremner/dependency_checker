@@ -92,7 +92,7 @@ namespace DependencyChecker.Controls
                 }
                 else
                 {
-                    if (dependencyToEvalulate.RequiredDependencies != null && dependencyToEvalulate.RequiredDependencies.Count > 0)
+                    if (dependencyToEvalulate.RequiredDependencies?.Count > 0)
                     {
                         var deps = this.GetItemDependencies(dependencyToEvalulate, context);
 
@@ -137,7 +137,7 @@ namespace DependencyChecker.Controls
                         "'{0}' dependency could not be verified. Install components above this one first.",
                         dependencyToEvalulate.Title);
 
-                if (dependencyToEvalulate.RequiredDependencies != null && dependencyToEvalulate.RequiredDependencies.Count > 0)
+                if (dependencyToEvalulate.RequiredDependencies?.Count > 0)
                 {
                     var deps = this.GetItemDependencies(dependencyToEvalulate, context);
 
@@ -191,7 +191,7 @@ namespace DependencyChecker.Controls
             {
                 if (dep != null)
                 {
-                    if (dep.RequiredDependencies != null && dep.RequiredDependencies.Count > 0)
+                    if (dep.RequiredDependencies?.Count > 0)
                     {
                         innerDeps = GetItemDependencies(dep, context);
                     }
@@ -275,10 +275,7 @@ namespace DependencyChecker.Controls
                 Thread.Sleep(1500);
             }
             var disposable = command as IDisposable;
-            if (disposable != null)
-            {
-                disposable.Dispose();
-            }
+            disposable?.Dispose();
         }
 
         private void OnWorkerProgressChanged(object sender, ProgressChangedEventArgs e)

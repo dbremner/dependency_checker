@@ -32,10 +32,7 @@ namespace DependencyChecker.Commands
 
         public void Dispose()
         {
-            if (this.installManager != null)
-            {
-                this.installManager.Dispose();
-            }
+            installManager?.Dispose();
         }
 
         public void Execute(Dependency dependency)
