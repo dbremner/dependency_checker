@@ -94,13 +94,11 @@ namespace DependencyChecker.UnitTests
 
         public class MockDependenciesInfoBuilder : DependenciesInfoBuilder
         {
-            private MockCheckEvaluator mockEvaluator = new MockCheckEvaluator();
-
             public MockDependenciesInfoBuilder() : base(null)
             {
             }
 
-            public MockCheckEvaluator MockEvaluator { get { return this.mockEvaluator; } }
+            public MockCheckEvaluator MockEvaluator { get; } = new MockCheckEvaluator();
 
             protected override void AddCheckEvaluators(EvaluationContext context, DependencyCheckEvaluatorCollection checkEvaluators)
             {
