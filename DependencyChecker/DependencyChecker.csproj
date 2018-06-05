@@ -146,6 +146,7 @@
     <Compile Include="CheckEvaluators\DatabaseCheckEvaluator.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CheckEvaluators\Expressions\LexerTokenType.cs" />
     <Compile Include="CheckEvaluators\Expressions\PropExpression.cs" />
     <Compile Include="CheckEvaluators\Expressions\PropIdentifier.cs" />
     <Compile Include="CheckEvaluators\Expressions\PropNegation.cs" />
