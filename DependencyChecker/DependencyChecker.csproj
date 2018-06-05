@@ -146,6 +146,9 @@
     <Compile Include="CheckEvaluators\DatabaseCheckEvaluator.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CheckEvaluators\Expressions\PropExpression.cs" />
+    <Compile Include="CheckEvaluators\Expressions\PropIdentifier.cs" />
+    <Compile Include="CheckEvaluators\Expressions\PropNegation.cs" />
     <Compile Include="Commands\CreateDatabaseCommand.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -158,7 +161,7 @@
     <Compile Include="CheckEvaluators\FileCheckEvaluator.cs" />
     <Compile Include="CheckEvaluators\MultiCertificateCheckEvaluator.cs" />
     <Compile Include="CheckEvaluators\ExpressionCheckEvaluator.cs" />
-    <Compile Include="CheckEvaluators\Expressions\Expression.cs" />
+    <Compile Include="CheckEvaluators\Expressions\PropDisjunction.cs" />
     <Compile Include="CheckEvaluators\Expressions\PropLogicLexer.cs" />
     <Compile Include="CheckEvaluators\Expressions\PropLogicParser.cs" />
     <Compile Include="CheckEvaluators\Helpers\InstalledHotFixes.cs" />
