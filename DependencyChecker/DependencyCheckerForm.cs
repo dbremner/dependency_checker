@@ -139,12 +139,10 @@ namespace DependencyChecker
 
                 var deps = dependency.DependsOn.Split(',');
 
-                deps.ToList()
-                    .ForEach(
-                        dep =>
-                        {
-                            dependency.RequiredDependencies.Add(this.dependenciesInfo.Dependencies.Where(item => item.Check == dep).SingleOrDefault());
-                        });
+                foreach (var dep in deps.ToList())
+                {
+                    dependency.RequiredDependencies.Add(this.dependenciesInfo.Dependencies.Where(item => item.Check == dep).SingleOrDefault());
+                }
             }
         }
 

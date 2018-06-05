@@ -187,7 +187,7 @@ namespace DependencyChecker.Controls
             string innerDeps = string.Empty;
 
             var sb = new System.Text.StringBuilder();
-            dependency.RequiredDependencies.ForEach(dep =>
+            foreach (var dep in dependency.RequiredDependencies)
             {
                 if (dep != null)
                 {
@@ -208,7 +208,7 @@ namespace DependencyChecker.Controls
                         }
                     }
                 }
-            });
+            }
 
             return sb.Length > 0 ? sb.ToString().Remove(sb.Length - 2) : string.Empty;
         }
