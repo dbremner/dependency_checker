@@ -11,6 +11,17 @@ namespace DependencyChecker.Common
 {
     public class Check
     {
+        public Check()
+        {
+        }
+
+        public Check(string checkType, string name, string value)
+        {
+            CheckType = checkType;
+            Name = name;
+            Value = value;
+        }
+
         public string CheckType { get; set; }
         public string Name { get; set; }
 
