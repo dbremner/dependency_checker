@@ -13,12 +13,11 @@ namespace DependencyChecker
 
     public partial class InstallingDependency : Form
     {
-        private int counter;
+        private int counter = 0;
 
         public InstallingDependency()
         {
             InitializeComponent();
-            counter = 0;
         }
 
         public void ShowProgress()
