@@ -11,10 +11,7 @@ namespace DependencyChecker.CheckEvaluators.Expressions
 {
     public class PropIdentifier : PropExpression
     {
-        public PropIdentifier(string name)
-        {
-            Name = name;
-        }
+        public PropIdentifier(string name) => Name = name;
 
         public string Name { get; }
     }

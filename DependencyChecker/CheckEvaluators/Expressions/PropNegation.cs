@@ -11,10 +11,7 @@ namespace DependencyChecker.CheckEvaluators.Expressions
 {
     public class PropNegation : PropExpression
     {
-        public PropNegation(PropExpression inner)
-        {
-            Inner = inner;
-        }
+        public PropNegation(PropExpression inner) => Inner = inner;
 
         public PropExpression Inner { get; }
     }
