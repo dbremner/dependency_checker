@@ -18,8 +18,8 @@ namespace DependencyChecker.UnitTests
     {
         public MockCheckEvaluator()
         {
-            this.ReturnValues = new Dictionary<string, bool>();
-            this.HitsPerCheck = new Dictionary<string, int>();
+            ReturnValues = new Dictionary<string, bool>();
+            HitsPerCheck = new Dictionary<string, int>();
         }
 
         public IDictionary<string, int> HitsPerCheck { get; }
@@ -32,16 +32,16 @@ namespace DependencyChecker.UnitTests
             {
                 throw new ArgumentNullException(nameof(check));
             }
-            this.HitsPerCheck[check.Name]++;
-            return this.ReturnValues[check.Name];
+            HitsPerCheck[check.Name]++;
+            return ReturnValues[check.Name];
         }
 
         public void ResetHitsPerCheck()
         {
-            this.HitsPerCheck.Clear();
-            foreach (string name in this.ReturnValues.Keys)
+            HitsPerCheck.Clear();
+            foreach (string name in ReturnValues.Keys)
             {
-                this.HitsPerCheck.Add(name, 0);
+                HitsPerCheck.Add(name, 0);
             }
         }
     }

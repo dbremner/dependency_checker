@@ -27,7 +27,7 @@ namespace DependencyChecker.Common
 
         public DependenciesInfo BuildDependenciesInfo(DependenciesSection configSection)
         {
-            return this.BuildDependenciesInfo(configSection, OperatingSystem.GetOsBuild());
+            return BuildDependenciesInfo(configSection, OperatingSystem.GetOsBuild());
         }
 
         public DependenciesInfo BuildDependenciesInfo(DependenciesSection configSection, int osBuild)
@@ -51,20 +51,20 @@ namespace DependencyChecker.Common
                            };
 
             // Add common checks & dependencies
-            this.AddDependencyChecks(info, configSection.CommonChecks);
-            this.AddDependencies(info, configSection.MinimumRequirements.Dependencies);
+            AddDependencyChecks(info, configSection.CommonChecks);
+            AddDependencies(info, configSection.MinimumRequirements.Dependencies);
 
             // Add OS checks & dependencies
             DependencyGroup osDependencyGroup = configSection.DependencyGroups.GetDependencyGroupByOsBuild(osBuild);
 
             if (osDependencyGroup != null)
             {
-                this.AddDependencyChecks(info, osDependencyGroup.Checks);
-                this.AddDependencies(info, osDependencyGroup.Dependencies);
+                AddDependencyChecks(info, osDependencyGroup.Checks);
+                AddDependencies(info, osDependencyGroup.Dependencies);
             }
 
             // Add evaluators
-            this.AddCheckEvaluators((EvaluationContext)info.EvaluationContext, configSection.CheckEvaluators);
+            AddCheckEvaluators((EvaluationContext)info.EvaluationContext, configSection.CheckEvaluators);
 
             return info;
         }
@@ -86,7 +86,7 @@ namespace DependencyChecker.Common
                 {
                     if (evaluator is IRequiresProductManager rpm)
                     {
-                        rpm.ProductManager = this.productManager;
+                        rpm.ProductManager = productManager;
                     }
                     context.SetEvaluatorForCheckType(checkEvaluator.Name, evaluator);
                 }
@@ -142,7 +142,7 @@ namespace DependencyChecker.Common
             {
                 if (dependencyElement.Enabled)
                 {
-                    info.Dependencies.Add(this.GetDependency(dependencyElement));
+                    info.Dependencies.Add(GetDependency(dependencyElement));
                 }
             }
         }
@@ -156,7 +156,7 @@ namespace DependencyChecker.Common
 
             foreach (DependencyCheck dependencyCheck in checks)
             {
-                Check check = this.GetCheck(dependencyCheck);
+                Check check = GetCheck(dependencyCheck);
                 info.EvaluationContext[check.Name] = check;
             }
         }

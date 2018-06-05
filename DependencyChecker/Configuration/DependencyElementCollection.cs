@@ -15,7 +15,7 @@ namespace DependencyChecker.Configuration
     {
         public DependencyElementCollection()
         {
-            this.AddElementName = "dependency";
+            AddElementName = "dependency";
         }
 
         public override ConfigurationElementCollectionType CollectionType
@@ -25,14 +25,14 @@ namespace DependencyChecker.Configuration
 
         public DependencyElement this[int index]
         {
-            get { return (DependencyElement)this.BaseGet(index); }
+            get { return (DependencyElement)BaseGet(index); }
             set
             {
-                if (this.BaseGet(index) != null)
+                if (BaseGet(index) != null)
                 {
-                    this.BaseRemoveAt(index);
+                    BaseRemoveAt(index);
                 }
-                this.BaseAdd(index, value);
+                BaseAdd(index, value);
             }
         }
 

@@ -13,8 +13,8 @@ namespace DependencyChecker.CheckEvaluators.Expressions
     {
         public PropConjunction(PropExpression left, PropExpression right)
         {
-            this.Left = left;
-            this.Right = right;
+            Left = left;
+            Right = right;
         }
 
         public PropExpression Left { get; }

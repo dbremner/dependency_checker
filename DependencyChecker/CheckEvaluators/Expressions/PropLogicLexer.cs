@@ -33,9 +33,9 @@ namespace DependencyChecker.CheckEvaluators.Expressions
         public PropLogicLexer(string source)
         {
             this.source = source;
-            this.CurrentTokenType = LexerTokenType.NotStarted;
-            this.CurrentTokenValue = null;
-            this.identifierRegex = new Regex("^[A-Za-z_][0-9A-Za-z_]*");
+            CurrentTokenType = LexerTokenType.NotStarted;
+            CurrentTokenValue = null;
+            identifierRegex = new Regex("^[A-Za-z_][0-9A-Za-z_]*");
         }
 
         public LexerTokenType CurrentTokenType { get; private set; }
@@ -44,39 +44,39 @@ namespace DependencyChecker.CheckEvaluators.Expressions
 
         public bool NextToken()
         {
-            if (this.CurrentTokenType == LexerTokenType.End)
+            if (CurrentTokenType == LexerTokenType.End)
             {
                 return false;
             }
-            this.EatLeadingWhiteSpace();
-            if (this.source.Length == 0)
+            EatLeadingWhiteSpace();
+            if (source.Length == 0)
             {
-                this.CurrentTokenType = LexerTokenType.End;
-                this.CurrentTokenValue = string.Empty;
+                CurrentTokenType = LexerTokenType.End;
+                CurrentTokenValue = string.Empty;
                 return false;
             }
 
-            if (this.MatchesKeyword("&&", LexerTokenType.And))
+            if (MatchesKeyword("&&", LexerTokenType.And))
             {
                 return true;
             }
-            if (this.MatchesKeyword("||", LexerTokenType.Or))
+            if (MatchesKeyword("||", LexerTokenType.Or))
             {
                 return true;
             }
-            if (this.MatchesKeyword("!", LexerTokenType.Not))
+            if (MatchesKeyword("!", LexerTokenType.Not))
             {
                 return true;
             }
-            if (this.MatchesKeyword("(", LexerTokenType.OpenParen))
+            if (MatchesKeyword("(", LexerTokenType.OpenParen))
             {
                 return true;
             }
-            if (this.MatchesKeyword(")", LexerTokenType.CloseParen))
+            if (MatchesKeyword(")", LexerTokenType.CloseParen))
             {
                 return true;
             }
-            if (this.MatchesIdentifier())
+            if (MatchesIdentifier())
             {
                 return true;
             }
@@ -86,17 +86,17 @@ namespace DependencyChecker.CheckEvaluators.Expressions
 
         private void EatLeadingWhiteSpace()
         {
-            this.source = this.source.TrimStart(new[] { ' ', '\t' });
+            source = source.TrimStart(new[] { ' ', '\t' });
         }
 
         private bool MatchesIdentifier()
         {
-            Match match = this.identifierRegex.Match(this.source);
+            Match match = identifierRegex.Match(source);
             if (match.Success)
             {
-                this.CurrentTokenType = LexerTokenType.Identifier;
-                this.CurrentTokenValue = this.source.Substring(0, match.Length);
-                this.source = this.source.Substring(match.Length);
+                CurrentTokenType = LexerTokenType.Identifier;
+                CurrentTokenValue = source.Substring(0, match.Length);
+                source = source.Substring(match.Length);
                 return true;
             }
             return false;
@@ -104,11 +104,11 @@ namespace DependencyChecker.CheckEvaluators.Expressions
 
         private bool MatchesKeyword(string keyword, LexerTokenType tokenType)
         {
-            if (this.source.StartsWith(keyword))
+            if (source.StartsWith(keyword))
             {
-                this.CurrentTokenType = tokenType;
-                this.CurrentTokenValue = keyword;
-                this.source = this.source.Substring(keyword.Length);
+                CurrentTokenType = tokenType;
+                CurrentTokenValue = keyword;
+                source = source.Substring(keyword.Length);
                 return true;
             }
             return false;

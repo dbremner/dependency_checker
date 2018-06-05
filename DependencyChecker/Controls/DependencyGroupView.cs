@@ -29,53 +29,53 @@ namespace DependencyChecker.Controls
             this.errorService = errorService;
             this.productManager = productManager;
             this.messageService = messageService;
-            this.InitializeComponent();
-            this.SetStyle(ControlStyles.ResizeRedraw, true);
+            InitializeComponent();
+            SetStyle(ControlStyles.ResizeRedraw, true);
         }
 
         public Collection<Dependency> Dependencies { get; set; }
 
         public string Heading
         {
-            get { return this.lblHeading.Text; }
-            set { this.lblHeading.Text = value; }
+            get { return lblHeading.Text; }
+            set { lblHeading.Text = value; }
         }
 
         public bool AddDependency(Dependency dependency, IEvaluationContext context)
         {
-            if (this.Dependencies == null)
+            if (Dependencies == null)
             {
-                this.Dependencies = new Collection<Dependency>();
+                Dependencies = new Collection<Dependency>();
             }
-            this.Dependencies.Add(dependency);
+            Dependencies.Add(dependency);
 
-            int controlNumber = this.flowLayoutPanel1.Controls.Count + 1;
-            var newControl = new DependencyViewControl(this.errorService, this.messageService, this.productManager);
+            int controlNumber = flowLayoutPanel1.Controls.Count + 1;
+            var newControl = new DependencyViewControl(errorService, messageService, productManager);
             newControl.SetDependency(dependency, context);
 
             // newControl.Location not needed because the flow layout will layout the control
             newControl.Name = "dependencyViewControl" + controlNumber;
             newControl.TabIndex = controlNumber - 1;
-            this.flowLayoutPanel1.Controls.Add(newControl);
+            flowLayoutPanel1.Controls.Add(newControl);
             return newControl.DependencyStatus;
         }
 
         public void Reset()
         {
-            this.Dependencies = null;
-            this.flowLayoutPanel1.Controls.Clear();
+            Dependencies = null;
+            flowLayoutPanel1.Controls.Clear();
         }
 
         private void OnPanel1Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            g.DrawLine(new Pen(Color.Blue, 2), new Point(0, 9), new Point(this.panel1.Width, 9));
+            g.DrawLine(new Pen(Color.Blue, 2), new Point(0, 9), new Point(panel1.Width, 9));
         }
 
         private void OnPictureBoxClicked(object sender, EventArgs e)
         {
-            this.flowLayoutPanel1.Visible = !this.flowLayoutPanel1.Visible;
-            this.pictureBox1.Image = this.flowLayoutPanel1.Visible ? Resources.Expanded : Resources.Collapsed;
+            flowLayoutPanel1.Visible = !flowLayoutPanel1.Visible;
+            pictureBox1.Image = flowLayoutPanel1.Visible ? Resources.Expanded : Resources.Collapsed;
         }
     }
 }

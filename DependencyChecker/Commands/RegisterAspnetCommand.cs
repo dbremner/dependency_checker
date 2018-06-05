@@ -17,7 +17,7 @@ namespace DependencyChecker.Commands
     {
         public RegisterAspnetCommand()
         {
-            this.Completed = false;
+            Completed = false;
         }
 
         public bool Completed
@@ -39,7 +39,7 @@ namespace DependencyChecker.Commands
 
             (new RegisterAspNetInIIS()).Execute();
 
-            this.Completed = true;
+            Completed = true;
         }
     }
 }

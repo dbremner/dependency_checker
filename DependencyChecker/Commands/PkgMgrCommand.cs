@@ -20,8 +20,8 @@ namespace DependencyChecker.Commands
 
         public PkgMgrCommand()
         {
-            this.pathToExe = Environment.ExpandEnvironmentVariables(@"%windir%\\system32\pkgmgr.exe");
-            this.Completed = false;
+            pathToExe = Environment.ExpandEnvironmentVariables(@"%windir%\\system32\pkgmgr.exe");
+            Completed = false;
         }
 
         public bool Completed { get; private set; }
@@ -32,9 +32,9 @@ namespace DependencyChecker.Commands
             {
                 throw new ArgumentNullException(nameof(dependency));
             }
-            this.Completed = false;
+            Completed = false;
 
-            ProcessStartInfo start = this.CreateProcessStartInfo();
+            ProcessStartInfo start = CreateProcessStartInfo();
             start.Arguments = dependency.Settings;
 
             using (var process = Process.Start(start))
@@ -49,14 +49,14 @@ namespace DependencyChecker.Commands
                 }
             }
 
-            this.Completed = true;
+            Completed = true;
         }
 
         protected ProcessStartInfo CreateProcessStartInfo()
         {
             var start = new ProcessStartInfo
                             {
-                                FileName = this.pathToExe,
+                                FileName = pathToExe,
                                 UseShellExecute = false,
                                 RedirectStandardOutput = true,
                                 CreateNoWindow = true

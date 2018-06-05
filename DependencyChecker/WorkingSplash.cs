@@ -15,28 +15,28 @@ namespace DependencyChecker
     {
         public WorkingSplash()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         public int MaxDependencies
         {
-            get { return this.progressBar.Maximum; }
-            set { this.progressBar.Maximum = value; }
+            get { return progressBar.Maximum; }
+            set { progressBar.Maximum = value; }
         }
 
         public string ScanningPrompt
         {
-            set { this.scanningLabel.Text = value; }
+            set { scanningLabel.Text = value; }
         }
 
         public void DisableProgressBar()
         {
-            this.progressBar.Visible = false;
+            progressBar.Visible = false;
         }
 
         public void ShowCurrentProgress(int current)
         {
-            this.progressBar.Value = current;
+            progressBar.Value = current;
         }
     }
 }

@@ -29,7 +29,7 @@ namespace DependencyChecker.CheckEvaluators
 
             foreach (var setting in settings)
             {
-                Product product = this.ProductManager.GetProduct(setting);
+                Product product = ProductManager.GetProduct(setting);
                 ret = product.IsInstalled(false);
                 if (!ret)
                 {

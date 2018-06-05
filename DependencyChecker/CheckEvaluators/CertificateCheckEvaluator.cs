@@ -31,7 +31,7 @@ namespace DependencyChecker.CheckEvaluators
             string subject;
             string storeName;
             StoreLocation location;
-            this.ExtractCertParameters(check.Value, out subject, out storeName, out location);
+            ExtractCertParameters(check.Value, out subject, out storeName, out location);
 
             var certificate = CertificateCommon.GetCertificate(subject, storeName, location);
             if (certificate == null)

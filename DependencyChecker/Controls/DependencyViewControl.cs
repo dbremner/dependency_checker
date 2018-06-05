@@ -36,9 +36,9 @@ namespace DependencyChecker.Controls
             this.errorService = errorService;
             this.productManager = productManager;
             this.messageService = messageService;
-            this.InitializeComponent();
-            this.llDownloadUrl.Text = string.Empty;
-            this.titleSavedColor = this.lblTitle.ForeColor;
+            InitializeComponent();
+            llDownloadUrl.Text = string.Empty;
+            titleSavedColor = lblTitle.ForeColor;
         }
 
         public bool DependencyStatus { get; set; }
@@ -49,30 +49,30 @@ namespace DependencyChecker.Controls
             {
                 throw new ArgumentNullException(nameof(dependencyToEvalulate));
             }
-            this.dependency = dependencyToEvalulate;
+            dependency = dependencyToEvalulate;
 
-            this.dependsOnTitle = "The following items must be installed before this one:";
-            this.lblTitle.Text = dependencyToEvalulate.Title;
-            this.lblExplanation.Text = dependencyToEvalulate.Explanation;
-            this.toolTip1.SetToolTip(this.lblExplanation, dependencyToEvalulate.Explanation);
+            dependsOnTitle = "The following items must be installed before this one:";
+            lblTitle.Text = dependencyToEvalulate.Title;
+            lblExplanation.Text = dependencyToEvalulate.Explanation;
+            toolTip1.SetToolTip(lblExplanation, dependencyToEvalulate.Explanation);
             if (!string.IsNullOrEmpty(dependencyToEvalulate.DownloadUrl))
             {
-                this.llDownloadUrl.Links[0].Description = dependencyToEvalulate.DownloadUrl;
-                this.llDownloadUrl.Text = @"Download";
+                llDownloadUrl.Links[0].Description = dependencyToEvalulate.DownloadUrl;
+                llDownloadUrl.Text = @"Download";
             }
             else if (!string.IsNullOrEmpty(dependencyToEvalulate.ScriptName))
             {
-                this.llDownloadUrl.Links[0].Description = dependencyToEvalulate.ScriptName;
-                this.llDownloadUrl.Text = @"Install now";
+                llDownloadUrl.Links[0].Description = dependencyToEvalulate.ScriptName;
+                llDownloadUrl.Text = @"Install now";
             }
             else if (!string.IsNullOrEmpty(dependencyToEvalulate.InfoUrl))
             {
-                this.llDownloadUrl.Links[0].Description = dependencyToEvalulate.InfoUrl;
-                this.llDownloadUrl.Text = @"More information";
+                llDownloadUrl.Links[0].Description = dependencyToEvalulate.InfoUrl;
+                llDownloadUrl.Text = @"More information";
             }
             if (context != null)
             {
-                this.EvaluateDependency(dependencyToEvalulate, context);
+                EvaluateDependency(dependencyToEvalulate, context);
             }
         }
 
@@ -82,51 +82,51 @@ namespace DependencyChecker.Controls
             {
                 if (context.Evaluate(dependencyToEvalulate.Check))
                 {
-                    this.pictureBox1.Image = Resources.Checked;
-                    this.llDownloadUrl.Visible = false;
-                    this.lblExplanation.Visible = false;
-                    this.Height = 25;
-                    this.lblTitle.ForeColor = this.titleSavedColor;
-                    this.lblTitle.Top = 4;
-                    this.DependencyStatus = true;
+                    pictureBox1.Image = Resources.Checked;
+                    llDownloadUrl.Visible = false;
+                    lblExplanation.Visible = false;
+                    Height = 25;
+                    lblTitle.ForeColor = titleSavedColor;
+                    lblTitle.Top = 4;
+                    DependencyStatus = true;
                 }
                 else
                 {
                     if (dependencyToEvalulate.RequiredDependencies?.Count > 0)
                     {
-                        var deps = this.GetItemDependencies(dependencyToEvalulate, context);
+                        var deps = GetItemDependencies(dependencyToEvalulate, context);
 
                         if (!string.IsNullOrEmpty(deps))
                         {
-                            this.toolTip1.SetToolTip(this.lblDependsOn, deps);
-                            this.pictureBox1.Image = Resources.Unchecked;
-                            this.pictureBox1.Top = 10;
-                            this.lblTitle.ForeColor = Color.Red;
-                            this.DependencyStatus = false;
-                            this.lblExplanation.Visible = true;
-                            this.lblExplanation.Text = this.dependsOnTitle;
-                            this.llDownloadUrl.Visible = false;
-                            this.lblDependsOn.Text = deps;
-                            this.lblDependsOn.Visible = true;
+                            toolTip1.SetToolTip(lblDependsOn, deps);
+                            pictureBox1.Image = Resources.Unchecked;
+                            pictureBox1.Top = 10;
+                            lblTitle.ForeColor = Color.Red;
+                            DependencyStatus = false;
+                            lblExplanation.Visible = true;
+                            lblExplanation.Text = dependsOnTitle;
+                            llDownloadUrl.Visible = false;
+                            lblDependsOn.Text = deps;
+                            lblDependsOn.Visible = true;
                         }
                         else
                         {
-                            this.pictureBox1.Image = Resources.Unchecked;
-                            this.pictureBox1.Top = 10;
-                            this.lblTitle.ForeColor = Color.Red;
-                            this.DependencyStatus = false;
-                            this.lblExplanation.Visible = true;
-                            this.llDownloadUrl.Visible = true;
+                            pictureBox1.Image = Resources.Unchecked;
+                            pictureBox1.Top = 10;
+                            lblTitle.ForeColor = Color.Red;
+                            DependencyStatus = false;
+                            lblExplanation.Visible = true;
+                            llDownloadUrl.Visible = true;
                         }
                     }
                     else
                     {
-                        this.pictureBox1.Image = Resources.Unchecked;
-                        this.pictureBox1.Top = 10;
-                        this.lblTitle.ForeColor = Color.Red;
-                        this.DependencyStatus = false;
-                        this.lblExplanation.Visible = true;
-                        this.llDownloadUrl.Visible = true;
+                        pictureBox1.Image = Resources.Unchecked;
+                        pictureBox1.Top = 10;
+                        lblTitle.ForeColor = Color.Red;
+                        DependencyStatus = false;
+                        lblExplanation.Visible = true;
+                        llDownloadUrl.Visible = true;
                     }
                 }
             }
@@ -139,46 +139,46 @@ namespace DependencyChecker.Controls
 
                 if (dependencyToEvalulate.RequiredDependencies?.Count > 0)
                 {
-                    var deps = this.GetItemDependencies(dependencyToEvalulate, context);
+                    var deps = GetItemDependencies(dependencyToEvalulate, context);
 
                     if (!string.IsNullOrEmpty(deps))
                     {
-                        this.toolTip1.SetToolTip(this.lblDependsOn, deps);
-                        this.pictureBox1.Image = Resources.Unchecked;
-                        this.pictureBox1.Top = 10;
-                        this.lblTitle.ForeColor = Color.Red;
-                        this.DependencyStatus = false;
-                        this.lblExplanation.Visible = true;
-                        this.lblExplanation.Text = this.dependsOnTitle;
-                        this.llDownloadUrl.Visible = false;
-                        this.lblDependsOn.Text = deps;
-                        this.lblDependsOn.Visible = true;
+                        toolTip1.SetToolTip(lblDependsOn, deps);
+                        pictureBox1.Image = Resources.Unchecked;
+                        pictureBox1.Top = 10;
+                        lblTitle.ForeColor = Color.Red;
+                        DependencyStatus = false;
+                        lblExplanation.Visible = true;
+                        lblExplanation.Text = dependsOnTitle;
+                        llDownloadUrl.Visible = false;
+                        lblDependsOn.Text = deps;
+                        lblDependsOn.Visible = true;
                     }
                     else
                     {
-                        this.pictureBox1.Image = Resources.Unchecked;
-                        this.pictureBox1.Top = 10;
-                        this.lblTitle.ForeColor = Color.Red;
-                        this.lblExplanation.Visible = true;
-                        this.DependencyStatus = false;
-                        this.llDownloadUrl.Visible = false;
-                        this.lblExplanation.Text = errorMessage;
-                        this.toolTip1.SetToolTip(this.lblExplanation, errorMessage);
+                        pictureBox1.Image = Resources.Unchecked;
+                        pictureBox1.Top = 10;
+                        lblTitle.ForeColor = Color.Red;
+                        lblExplanation.Visible = true;
+                        DependencyStatus = false;
+                        llDownloadUrl.Visible = false;
+                        lblExplanation.Text = errorMessage;
+                        toolTip1.SetToolTip(lblExplanation, errorMessage);
                     }
                 }
                 else
                 {
-                    this.pictureBox1.Image = Resources.Unchecked;
-                    this.pictureBox1.Top = 10;
-                    this.lblTitle.ForeColor = Color.Red;
-                    this.lblExplanation.Visible = true;
-                    this.DependencyStatus = false;
-                    this.llDownloadUrl.Visible = false;
-                    this.lblExplanation.Text = errorMessage;
-                    this.toolTip1.SetToolTip(this.lblExplanation, errorMessage);
+                    pictureBox1.Image = Resources.Unchecked;
+                    pictureBox1.Top = 10;
+                    lblTitle.ForeColor = Color.Red;
+                    lblExplanation.Visible = true;
+                    DependencyStatus = false;
+                    llDownloadUrl.Visible = false;
+                    lblExplanation.Text = errorMessage;
+                    toolTip1.SetToolTip(lblExplanation, errorMessage);
                 }
 
-                this.errorService.LogError(errorMessage, exception);
+                errorService.LogError(errorMessage, exception);
             }
         }
 
@@ -215,55 +215,55 @@ namespace DependencyChecker.Controls
 
         private void OnDownloadUrlLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(this.dependency.DownloadUrl))
+            if (!string.IsNullOrEmpty(dependency.DownloadUrl))
             {
-                Process.Start(this.dependency.DownloadUrl);
+                Process.Start(dependency.DownloadUrl);
             }
-            else if (!string.IsNullOrEmpty(this.dependency.ScriptName))
+            else if (!string.IsNullOrEmpty(dependency.ScriptName))
             {
-                if (this.dependency.ScriptName.StartsWith("cmd:"))
+                if (dependency.ScriptName.StartsWith("cmd:"))
                 {
                     var worker = new BackgroundWorker { WorkerReportsProgress = true };
-                    worker.DoWork += this.OnWorkerDoWork;
-                    worker.ProgressChanged += this.OnWorkerProgressChanged;
-                    worker.RunWorkerCompleted += this.OnWorkerRunWorkerCompleted;
+                    worker.DoWork += OnWorkerDoWork;
+                    worker.ProgressChanged += OnWorkerProgressChanged;
+                    worker.RunWorkerCompleted += OnWorkerRunWorkerCompleted;
 
-                    this.installingDependency = new InstallingDependency();
+                    installingDependency = new InstallingDependency();
                     try
                     {
-                        this.TopLevelControl.Cursor = Cursors.WaitCursor;
-                        this.installingDependency.Show();
+                        TopLevelControl.Cursor = Cursors.WaitCursor;
+                        installingDependency.Show();
                         Application.DoEvents();
                         worker.RunWorkerAsync();
                     }
                     catch (Exception ex)
                     {
-                        this.errorService.ShowError("This dependency could not be verified. Install components above this one first.", ex);
+                        errorService.ShowError("This dependency could not be verified. Install components above this one first.", ex);
                     }
                 }
                 else
                 {
-                    Process.Start(this.dependency.ScriptName);
+                    Process.Start(dependency.ScriptName);
                 }
             }
-            else if (!string.IsNullOrEmpty(this.dependency.InfoUrl))
+            else if (!string.IsNullOrEmpty(dependency.InfoUrl))
             {
-                Process.Start(this.dependency.InfoUrl);
+                Process.Start(dependency.InfoUrl);
             }
         }
 
         private void OnWorkerDoWork(object sender, DoWorkEventArgs e)
         {
-            var cmdType = this.dependency.ScriptName.Split(':')[1];
+            var cmdType = dependency.ScriptName.Split(':')[1];
             var command = Activator.CreateInstance(Type.GetType(cmdType)) as IDependencySetupCommand;
             if (command is IRequiresProductManager rpm)
             {
-                rpm.ProductManager = this.productManager;
+                rpm.ProductManager = productManager;
             }
 
             try
             {
-                command.Execute(this.dependency);
+                command.Execute(dependency);
             }
             catch (Exception ex)
             {
@@ -280,20 +280,20 @@ namespace DependencyChecker.Controls
 
         private void OnWorkerProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            this.installingDependency.ShowProgress();
+            installingDependency.ShowProgress();
         }
 
         private void OnWorkerRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.installingDependency.Close();
-            this.TopLevelControl.Cursor = Cursors.Default;
+            installingDependency.Close();
+            TopLevelControl.Cursor = Cursors.Default;
             if (e.Result != null)
             {
-                this.errorService.ShowError("This dependency could not be verified. Install components above this one first.", e.Result as Exception);
+                errorService.ShowError("This dependency could not be verified. Install components above this one first.", e.Result as Exception);
                 return;
             }
 
-            this.messageService.ShowMessage("The installation of this dependency has completed successfully. To verify it, press 'Rescan'.");
+            messageService.ShowMessage("The installation of this dependency has completed successfully. To verify it, press 'Rescan'.");
         }
     }
 }

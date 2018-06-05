@@ -24,7 +24,7 @@ namespace DependencyChecker.SystemIntegration
 
         public void LoadDefaultUserProfile()
         {
-            ProcessStartInfo start = this.CreateProcessStartInfo(this.pathToAppCmdExe);
+            ProcessStartInfo start = CreateProcessStartInfo(pathToAppCmdExe);
             start.Arguments = "set apppool \"ASP.NET v4.0\" /processModel.loadUserProfile:true";
 
             using (var process = Process.Start(start))
@@ -42,7 +42,7 @@ namespace DependencyChecker.SystemIntegration
 
         public bool IsDefaultUserProfileEnabled()
         {
-            ProcessStartInfo start = this.CreateProcessStartInfo(this.pathToAppCmdExe);
+            ProcessStartInfo start = CreateProcessStartInfo(pathToAppCmdExe);
             start.Arguments = "list apppools /name:\"ASP.NET v4.0\" /processModel.loadUserProfile:true";
 
             using (var process = Process.Start(start))
@@ -57,7 +57,7 @@ namespace DependencyChecker.SystemIntegration
 
         public void CreateWebApplication(string applicationPath, string applicationName)
         {
-            ProcessStartInfo start = this.CreateProcessStartInfo(this.pathToAppCmdExe);
+            ProcessStartInfo start = CreateProcessStartInfo(pathToAppCmdExe);
             string args = string.Format("add app /site.name:\"Default web site\" /path:\"/{1}\" /physicalPath:\"{0}\\{1}\"", applicationPath, applicationName);
             start.Arguments = args;
 
@@ -76,7 +76,7 @@ namespace DependencyChecker.SystemIntegration
 
         public bool ExistsApplication(string applicationName)
         {
-            ProcessStartInfo start = this.CreateProcessStartInfo(this.pathToAppCmdExe);
+            ProcessStartInfo start = CreateProcessStartInfo(pathToAppCmdExe);
             start.Arguments = "list app";
 
             using (var process = Process.Start(start))
@@ -91,7 +91,7 @@ namespace DependencyChecker.SystemIntegration
 
         public bool IsHttpsEnabled()
         {
-            ProcessStartInfo start = this.CreateProcessStartInfo(this.pathToAppCmdExe);
+            ProcessStartInfo start = CreateProcessStartInfo(pathToAppCmdExe);
             start.Arguments = "list site /site.name:\"Default Web Site\"";
 
             using (var process = Process.Start(start))

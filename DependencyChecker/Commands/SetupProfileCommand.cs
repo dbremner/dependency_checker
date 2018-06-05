@@ -16,7 +16,7 @@ namespace DependencyChecker.Commands
     {
         public SetupProfileCommand()
         {
-            this.Completed = false;
+            Completed = false;
         }
 
         public bool Completed { get; private set; }
@@ -28,7 +28,7 @@ namespace DependencyChecker.Commands
             (new RegisterAspNetInIIS()).Execute();
             appCmd.LoadDefaultUserProfile();
 
-            this.Completed = true;
+            Completed = true;
         }
     }
 }

@@ -22,21 +22,21 @@ namespace DependencyChecker.Common
 
         public EvaluationContext()
         {
-            this.evaluators = new Dictionary<string, ICheckEvaluator>();
-            this.namedChecks = new Dictionary<string, Check>();
-            this.expressionEvaluator = new ExpressionCheckEvaluator();
+            evaluators = new Dictionary<string, ICheckEvaluator>();
+            namedChecks = new Dictionary<string, Check>();
+            expressionEvaluator = new ExpressionCheckEvaluator();
         }
 
         public Check this[string name]
         {
-            get { return this.namedChecks[name]; }
+            get { return namedChecks[name]; }
             set
             {
-                if (this.namedChecks.ContainsKey(name))
+                if (namedChecks.ContainsKey(name))
                 {
-                    this.namedChecks.Remove(name);
+                    namedChecks.Remove(name);
                 }
-                this.namedChecks.Add(name, value);
+                namedChecks.Add(name, value);
             }
         }
 
@@ -46,22 +46,22 @@ namespace DependencyChecker.Common
             {
                 throw new ArgumentNullException(nameof(check));
             }
-            return this.GetEvaluatorForCheckType(check.CheckType).Evaluate(check, this);
+            return GetEvaluatorForCheckType(check.CheckType).Evaluate(check, this);
         }
 
         public bool Evaluate(string check)
         {
-            return this.expressionEvaluator.Evaluate(check, this);
+            return expressionEvaluator.Evaluate(check, this);
         }
 
         public IEnumerable<string> GetCheckNames()
         {
-            return this.namedChecks.Keys;
+            return namedChecks.Keys;
         }
 
         public ICheckEvaluator GetEvaluatorForCheckType(string checkType)
         {
-            return this.evaluators[checkType];
+            return evaluators[checkType];
         }
 
         public void SetEvaluatorForCheckType(string checkType, ICheckEvaluator evaluator)
@@ -70,7 +70,7 @@ namespace DependencyChecker.Common
             {
                 throw new ArgumentNullException();
             }
-            this.evaluators.Add(checkType, evaluator);
+            evaluators.Add(checkType, evaluator);
         }
     }
 }

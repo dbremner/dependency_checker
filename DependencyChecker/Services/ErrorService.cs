@@ -21,7 +21,7 @@ namespace DependencyChecker.Services
 
         public ErrorService()
         {
-            this.log = new EventLog(LogName)
+            log = new EventLog(LogName)
                            {
                                Source = EventSourceName
                            };
@@ -34,14 +34,14 @@ namespace DependencyChecker.Services
 
         public void LogError(string message, Exception exception)
         {
-            this.log.WriteEntry(string.Format("An exception has occured in the DependencyChecker. \r\nMessage:{0}\r\n{1}", message, exception.TraceInformation()));
+            log.WriteEntry(string.Format("An exception has occured in the DependencyChecker. \r\nMessage:{0}\r\n{1}", message, exception.TraceInformation()));
         }
 
         public void ShowError(string message, Exception exception)
         {
             MessageBox.Show(message, @"Dependency checker", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            this.LogError(message, exception);
+            LogError(message, exception);
         }
     }
 }

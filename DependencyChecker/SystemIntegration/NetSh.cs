@@ -20,7 +20,7 @@ namespace DependencyChecker.SystemIntegration
             // this appId is the default used to performed this operation
             const string AppId = "{4dc3e181-e14b-4a21-b022-59fc669b0914}";
 
-            var start = CreateProcessStartInfo(this.pathToNetSh);
+            var start = CreateProcessStartInfo(pathToNetSh);
             string args = string.Format("http add sslcert ipport=0.0.0.0:443 certhash={0} appid={1}", CertHash, AppId);
             start.Arguments = args;
 

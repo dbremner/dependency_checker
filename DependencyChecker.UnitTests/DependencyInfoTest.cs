@@ -106,8 +106,8 @@ namespace DependencyChecker.UnitTests
                 {
                     throw new ArgumentNullException(nameof(context));
                 }
-                context.SetEvaluatorForCheckType("Registry", this.MockEvaluator);
-                context.SetEvaluatorForCheckType("Software", this.MockEvaluator);
+                context.SetEvaluatorForCheckType("Registry", MockEvaluator);
+                context.SetEvaluatorForCheckType("Software", MockEvaluator);
                 context.SetEvaluatorForCheckType("Expression", new ExpressionCheckEvaluator());
             }
         }

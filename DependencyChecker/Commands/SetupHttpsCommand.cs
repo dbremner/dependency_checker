@@ -16,7 +16,7 @@ namespace DependencyChecker.Commands
     {
         public SetupHttpsCommand()
         {
-            this.Completed = false;
+            Completed = false;
         }
 
         public bool Completed { get; private set; }
@@ -25,7 +25,7 @@ namespace DependencyChecker.Commands
         {
             var appCmd = new AppCmd();
             appCmd.SetHttpsBinding();
-            this.Completed = true;
+            Completed = true;
         }
     }
 }

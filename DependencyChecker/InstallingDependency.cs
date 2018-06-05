@@ -17,18 +17,18 @@ namespace DependencyChecker
 
         public InstallingDependency()
         {
-            this.InitializeComponent();
-            this.counter = 0;
+            InitializeComponent();
+            counter = 0;
         }
 
         public void ShowProgress()
         {
-            this.counter++;
-            this.progressLabel.Text += @".";
-            if (this.counter > 5)
+            counter++;
+            progressLabel.Text += @".";
+            if (counter > 5)
             {
-                this.counter = 0;
-                this.progressLabel.Text = @".";
+                counter = 0;
+                progressLabel.Text = @".";
             }
         }
     }

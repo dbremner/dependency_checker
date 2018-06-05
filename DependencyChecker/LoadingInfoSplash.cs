@@ -15,7 +15,7 @@ namespace DependencyChecker
     {
         public LoadingInfoSplash()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }

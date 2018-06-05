@@ -15,24 +15,24 @@ namespace DependencyChecker.Configuration
     {
         public DependencyCheckCollection()
         {
-            this.AddElementName = "check";
+            AddElementName = "check";
         }
 
         public new DependencyCheck this[string name]
         {
-            get { return (DependencyCheck)this.BaseGet(name); }
+            get { return (DependencyCheck)BaseGet(name); }
         }
 
         public DependencyCheck this[int index]
         {
-            get { return (DependencyCheck)this.BaseGet(index); }
+            get { return (DependencyCheck)BaseGet(index); }
             set
             {
-                if (this.BaseGet(index) != null)
+                if (BaseGet(index) != null)
                 {
-                    this.BaseRemoveAt(index);
+                    BaseRemoveAt(index);
                 }
-                this.BaseAdd(index, value);
+                BaseAdd(index, value);
             }
         }
 

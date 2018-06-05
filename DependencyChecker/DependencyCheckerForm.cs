@@ -40,12 +40,12 @@ namespace DependencyChecker
 
             try
             {
-                this.InitializeComponent();
-                this.InitializeConfigurationSection();
-                this.titleLabel.Text = this.configSection.Title;
-                this.Text = this.configSection.Title;
-                this.descriptionLabel.Text = this.configSection.Description;
-                this.InitializedDependencyGroupViews();
+                InitializeComponent();
+                InitializeConfigurationSection();
+                titleLabel.Text = configSection.Title;
+                Text = configSection.Title;
+                descriptionLabel.Text = configSection.Description;
+                InitializedDependencyGroupViews();
             }
             catch (Exception ex)
             {
@@ -56,19 +56,19 @@ namespace DependencyChecker
 
         protected virtual DependenciesInfoBuilder GetDependenciesInfoBuilder()
         {
-            return new DependenciesInfoBuilder(this.productManager);
+            return new DependenciesInfoBuilder(productManager);
         }
 
         protected override void OnLoad(EventArgs e)
         {
-            foreach (DependencyGroupView dependencyGroupView in this.dependencyGroupViews.Values)
+            foreach (DependencyGroupView dependencyGroupView in dependencyGroupViews.Values)
             {
                 dependencyGroupView.Reset();
             }
 
-            foreach (Dependency d in this.dependenciesInfo.Dependencies)
+            foreach (Dependency d in dependenciesInfo.Dependencies)
             {
-                this.AddDependencyControl(d, null);
+                AddDependencyControl(d, null);
             }
             base.OnLoad(e);
         }
@@ -80,17 +80,17 @@ namespace DependencyChecker
 
         private void AddDependencyControl(Dependency dependency, IEvaluationContext context)
         {
-            this.dependencyGroupViews[dependency.Category].AddDependency(dependency, context);
+            dependencyGroupViews[dependency.Category].AddDependency(dependency, context);
         }
 
         private void InitializeConfigurationSection()
         {
-            this.fileConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            this.configSection = (DependenciesSection)this.fileConfig.GetSection(DependenciesSection.SectionName);
+            fileConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            configSection = (DependenciesSection)fileConfig.GetSection(DependenciesSection.SectionName);
 
             try
             {
-                this.dependenciesInfo = this.GetDependenciesInfoBuilder().BuildDependenciesInfo(this.configSection);
+                dependenciesInfo = GetDependenciesInfoBuilder().BuildDependenciesInfo(configSection);
             }
             catch (NotSupportedException e)
             {
@@ -101,31 +101,31 @@ namespace DependencyChecker
 
         private void InitializedDependencyGroupViews()
         {
-            this.SuspendLayout();
+            SuspendLayout();
 
-            this.dependencyGroupViews = new Dictionary<string, DependencyGroupView>();
-            foreach (Dependency dependency in this.dependenciesInfo.Dependencies)
+            dependencyGroupViews = new Dictionary<string, DependencyGroupView>();
+            foreach (Dependency dependency in dependenciesInfo.Dependencies)
             {
-                if (!this.dependencyGroupViews.ContainsKey(dependency.Category))
+                if (!dependencyGroupViews.ContainsKey(dependency.Category))
                 {
-                    var newGroupView = new DependencyGroupView(this.errorService, this.messageService, this.productManager)
+                    var newGroupView = new DependencyGroupView(errorService, messageService, productManager)
                                            {
                                                Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right,
                                                AutoSize = true,
                                                AutoSizeMode = AutoSizeMode.GrowAndShrink,
                                                Dependencies = null,
                                                Heading = dependency.Category,
-                                               Size = new Size(this.flowLayoutPanel.Width - 6, 18),
-                                               MinimumSize = new Size(this.flowLayoutPanel.Width - 6, 18)
+                                               Size = new Size(flowLayoutPanel.Width - 6, 18),
+                                               MinimumSize = new Size(flowLayoutPanel.Width - 6, 18)
                                            };
 
-                    this.flowLayoutPanel.Controls.Add(newGroupView);
-                    this.dependencyGroupViews.Add(dependency.Category, newGroupView);
+                    flowLayoutPanel.Controls.Add(newGroupView);
+                    dependencyGroupViews.Add(dependency.Category, newGroupView);
                 }
 
-                this.SetRequiredDependencies(dependency);
+                SetRequiredDependencies(dependency);
             }
-            this.ResumeLayout(true);
+            ResumeLayout(true);
         }
 
         private void SetRequiredDependencies(Dependency dependency)
@@ -141,7 +141,7 @@ namespace DependencyChecker
 
                 foreach (var dep in deps.ToList())
                 {
-                    dependency.RequiredDependencies.Add(this.dependenciesInfo.Dependencies.Where(item => item.Check == dep).SingleOrDefault());
+                    dependency.RequiredDependencies.Add(dependenciesInfo.Dependencies.Where(item => item.Check == dep).SingleOrDefault());
                 }
             }
         }
@@ -150,34 +150,34 @@ namespace DependencyChecker
         {
             try
             {
-                this.scanButton.Enabled = false;
-                this.Scan();
-                this.scanButton.Text = @"&Rescan";
+                scanButton.Enabled = false;
+                Scan();
+                scanButton.Text = @"&Rescan";
             }
             finally
             {
-                this.scanButton.Enabled = true;
+                scanButton.Enabled = true;
             }
         }
 
         private void Scan()
         {
-            foreach (DependencyGroupView dependencyGroupView in this.dependencyGroupViews.Values)
+            foreach (DependencyGroupView dependencyGroupView in dependencyGroupViews.Values)
             {
                 dependencyGroupView.Reset();
             }
 
             var splash = new WorkingSplash();
             splash.Show();
-            splash.MaxDependencies = this.dependenciesInfo.Dependencies.Count;
+            splash.MaxDependencies = dependenciesInfo.Dependencies.Count;
             Application.DoEvents();
 
             int current = 0;
-            foreach (Dependency d in this.dependenciesInfo.Dependencies)
+            foreach (Dependency d in dependenciesInfo.Dependencies)
             {
                 splash.ScanningPrompt = "Scanning for " + d.Title;
                 splash.ShowCurrentProgress(current++);
-                this.AddDependencyControl(d, this.dependenciesInfo.EvaluationContext);
+                AddDependencyControl(d, dependenciesInfo.EvaluationContext);
             }
 
             splash.Close();

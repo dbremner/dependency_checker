@@ -23,7 +23,7 @@ namespace DependencyChecker.Commands
     {
         public CertificateSetupCommand()
         {
-            this.Completed = false;
+            Completed = false;
         }
 
         public bool Completed { get; private set; }
@@ -42,7 +42,7 @@ namespace DependencyChecker.Commands
                 string certFile;
                 string storeName;
                 string password;
-                this.ExtractCertParameters(cert, out certFile, out storeName, out password);
+                ExtractCertParameters(cert, out certFile, out storeName, out password);
 
                 if (storeName == @"AuthRoot")
                 {
@@ -55,7 +55,7 @@ namespace DependencyChecker.Commands
                 AddAccessToCertificate(certificate, networkServiceUserName);
             }
 
-            this.Completed = true;
+            Completed = true;
         }
 
         private static void AddAccessToCertificate(X509Certificate2 cert, string user)

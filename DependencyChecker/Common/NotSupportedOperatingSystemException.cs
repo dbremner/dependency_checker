@@ -16,7 +16,7 @@ namespace DependencyChecker.Common
         public NotSupportedOperatingSystemException(int osBuild)
             : base(string.Format("The dependency checker does not contain any information on the dependencies for your current Operating System (build: {0})", osBuild))
         {
-            this.OsBuild = osBuild;
+            OsBuild = osBuild;
         }
 
         public int OsBuild { get; }
