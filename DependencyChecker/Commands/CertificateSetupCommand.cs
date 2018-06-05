@@ -63,7 +63,16 @@ namespace DependencyChecker.Commands
         {
             var rsa = cert.PrivateKey as RSACryptoServiceProvider;
 
-            if (rsa != null)
+            if (rsa == null)
+            {
+                var message =
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        "Unable to access the certificate's private key to assign the required permissions. Certificate name: {0}",
+                        cert.SubjectName);
+                throw new ApplicationException(message);
+            }
+            else
             {
                 string keyfilepath =
                     CertificateCommon.FindKeyLocation(rsa.CspKeyContainerInfo.UniqueKeyContainerName);
@@ -74,18 +83,10 @@ namespace DependencyChecker.Commands
                 FileSecurity fs = file.GetAccessControl();
 
                 var account = new NTAccount(user);
-                fs.AddAccessRule(new FileSystemAccessRule(account, FileSystemRights.FullControl, AccessControlType.Allow));
+                fs.AddAccessRule(new FileSystemAccessRule(account, FileSystemRights.FullControl,
+                    AccessControlType.Allow));
 
                 file.SetAccessControl(fs);
-            }
-            else
-            {
-                var message =
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        "Unable to access the certificate's private key to assign the required permissions. Certificate name: {0}",
-                        cert.SubjectName);
-                throw new ApplicationException(message);
             }
         }
 
