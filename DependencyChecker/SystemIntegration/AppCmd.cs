@@ -27,7 +27,7 @@ namespace DependencyChecker.SystemIntegration
             ProcessStartInfo start = this.CreateProcessStartInfo(this.pathToAppCmdExe);
             start.Arguments = "set apppool \"ASP.NET v4.0\" /processModel.loadUserProfile:true";
 
-            using (Process process = Process.Start(start))
+            using (var process = Process.Start(start))
             {
                 using (StreamReader reader = process.StandardOutput)
                 {
@@ -45,7 +45,7 @@ namespace DependencyChecker.SystemIntegration
             ProcessStartInfo start = this.CreateProcessStartInfo(this.pathToAppCmdExe);
             start.Arguments = "list apppools /name:\"ASP.NET v4.0\" /processModel.loadUserProfile:true";
 
-            using (Process process = Process.Start(start))
+            using (var process = Process.Start(start))
             {
                 using (StreamReader reader = process.StandardOutput)
                 {
@@ -61,7 +61,7 @@ namespace DependencyChecker.SystemIntegration
             string args = string.Format("add app /site.name:\"Default web site\" /path:\"/{1}\" /physicalPath:\"{0}\\{1}\"", applicationPath, applicationName);
             start.Arguments = args;
 
-            using (Process process = Process.Start(start))
+            using (var process = Process.Start(start))
             {
                 using (StreamReader reader = process.StandardOutput)
                 {
@@ -79,7 +79,7 @@ namespace DependencyChecker.SystemIntegration
             ProcessStartInfo start = this.CreateProcessStartInfo(this.pathToAppCmdExe);
             start.Arguments = "list app";
 
-            using (Process process = Process.Start(start))
+            using (var process = Process.Start(start))
             {
                 using (StreamReader reader = process.StandardOutput)
                 {
@@ -94,7 +94,7 @@ namespace DependencyChecker.SystemIntegration
             ProcessStartInfo start = this.CreateProcessStartInfo(this.pathToAppCmdExe);
             start.Arguments = "list site /site.name:\"Default Web Site\"";
 
-            using (Process process = Process.Start(start))
+            using (var process = Process.Start(start))
             {
                 using (StreamReader reader = process.StandardOutput)
                 {

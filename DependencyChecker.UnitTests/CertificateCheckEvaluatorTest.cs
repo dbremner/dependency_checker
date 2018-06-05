@@ -19,16 +19,16 @@ namespace DependencyChecker.UnitTests
         [TestMethod]
         public void ShouldEvaluateToTrue()
         {
-            CertificateCheckEvaluator evaluator = new CertificateCheckEvaluator();
-            Check check = new Check { Name = "Certficate", Value = "LocalMachine,My,CN=adatum" };
+            var evaluator = new CertificateCheckEvaluator();
+            var check = new Check { Name = "Certficate", Value = "LocalMachine,My,CN=adatum" };
             Assert.IsTrue(evaluator.Evaluate(check, null));
         }
 
         [TestMethod]
         public void ShouldEvaluateToFalse()
         {
-            CertificateCheckEvaluator evaluator = new CertificateCheckEvaluator();
-            Check check = new Check { Name = "Certficate", Value = "LocalMachine,My,CN=noExist" };
+            var evaluator = new CertificateCheckEvaluator();
+            var check = new Check { Name = "Certficate", Value = "LocalMachine,My,CN=noExist" };
             Assert.IsFalse(evaluator.Evaluate(check, null));
         }
     }

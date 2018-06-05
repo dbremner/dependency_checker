@@ -20,15 +20,15 @@ namespace DependencyChecker.UnitTests
         [ExpectedException(typeof(ArgumentNullException))]
         public void CantStoreNullEvaluator()
         {
-            EvaluationContext context = new EvaluationContext();
+            var context = new EvaluationContext();
             context.SetEvaluatorForCheckType("myType", null);
         }
 
         [TestMethod]
         public void SetEvaluatorStoreEvaluator()
         {
-            EvaluationContext context = new EvaluationContext();
-            MockCheckEvaluator evaluator = new MockCheckEvaluator();
+            var context = new EvaluationContext();
+            var evaluator = new MockCheckEvaluator();
             context.SetEvaluatorForCheckType("myType", evaluator);
             ICheckEvaluator evaluator2 = context.GetEvaluatorForCheckType("myType");
 
@@ -39,8 +39,8 @@ namespace DependencyChecker.UnitTests
         [ExpectedException(typeof(ArgumentException))]
         public void CantOverwriteEvaluators()
         {
-            EvaluationContext context = new EvaluationContext();
-            MockCheckEvaluator evaluator = new MockCheckEvaluator();
+            var context = new EvaluationContext();
+            var evaluator = new MockCheckEvaluator();
             context.SetEvaluatorForCheckType("myType", evaluator);
             context.SetEvaluatorForCheckType("myType", evaluator);
         }

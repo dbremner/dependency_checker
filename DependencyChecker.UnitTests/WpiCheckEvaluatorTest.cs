@@ -67,9 +67,9 @@ namespace DependencyChecker.UnitTests
         [TestMethod]
         public void ShouldEvaluateToTrueWifSdk()
         {
-            WpiCheckEvaluator evaluator = new WpiCheckEvaluator();
+            var evaluator = new WpiCheckEvaluator();
             evaluator.ProductManager = productManager;
-            Check check = new Check { CheckType = "WPISDK", Value = "WIFSDK" };
+            var check = new Check { CheckType = "WPISDK", Value = "WIFSDK" };
 
             Assert.IsTrue(evaluator.Evaluate(check, null));
         }
@@ -77,9 +77,9 @@ namespace DependencyChecker.UnitTests
         [TestMethod]
         public void ShouldEvaluateToTrueWCFHTTP()
         {
-            WpiCheckEvaluator evaluator = new WpiCheckEvaluator();
+            var evaluator = new WpiCheckEvaluator();
             evaluator.ProductManager = productManager;
-            Check check = new Check { CheckType = "WCFHTTP", Value = "WCFHTTP" };
+            var check = new Check { CheckType = "WCFHTTP", Value = "WCFHTTP" };
 
             Assert.IsTrue(evaluator.Evaluate(check, null));
         }
@@ -87,9 +87,9 @@ namespace DependencyChecker.UnitTests
         [TestMethod]
         public void ShouldEvaluateToTrueIIS7CGCC()
         {
-            WpiCheckEvaluator evaluator = new WpiCheckEvaluator();
+            var evaluator = new WpiCheckEvaluator();
             evaluator.ProductManager = productManager;
-            Check check = new Check { CheckType = "IIS7CGCC", Value = "IIS7CGCC" };
+            var check = new Check { CheckType = "IIS7CGCC", Value = "IIS7CGCC" };
 
             Assert.IsTrue(evaluator.Evaluate(check, null));
         }
@@ -97,9 +97,9 @@ namespace DependencyChecker.UnitTests
         [TestMethod]
         public void ShouldEvaluateToTrueWindowsAzureTools()
         {
-            WpiCheckEvaluator evaluator = new WpiCheckEvaluator();
+            var evaluator = new WpiCheckEvaluator();
             evaluator.ProductManager = productManager;
-            Check check = new Check { CheckType = "WindowsAzureToolsVS2010", Value = "WindowsAzureToolsVS2010" };
+            var check = new Check { CheckType = "WindowsAzureToolsVS2010", Value = "WindowsAzureToolsVS2010" };
 
             Assert.IsTrue(evaluator.Evaluate(check, null));
         }

@@ -23,7 +23,7 @@ namespace DependencyChecker.UnitTests
         public void CheckAnalysisIsPropagated()
         {
             DependenciesSection section = TestHelper.GetDependenciesSection();
-            MockDependenciesInfoBuilder builder = new MockDependenciesInfoBuilder();
+            var builder = new MockDependenciesInfoBuilder();
 
             builder.MockEvaluator.ReturnValues.Add("Reg1", true);
             builder.MockEvaluator.ReturnValues.Add("Reg2", true);
@@ -43,7 +43,7 @@ namespace DependencyChecker.UnitTests
         public void CheckAnalysisIsPropagated2()
         {
             DependenciesSection section = TestHelper.GetDependenciesSection();
-            MockDependenciesInfoBuilder builder = new MockDependenciesInfoBuilder();
+            var builder = new MockDependenciesInfoBuilder();
 
             builder.MockEvaluator.ReturnValues.Add("Reg1", false);
             builder.MockEvaluator.ReturnValues.Add("Reg2", false);
@@ -65,7 +65,7 @@ namespace DependencyChecker.UnitTests
             // Just check if expression is analyzed completely.
             // Non cached results allow rescan with same objects
             DependenciesSection section = TestHelper.GetDependenciesSection();
-            MockDependenciesInfoBuilder builder = new MockDependenciesInfoBuilder();
+            var builder = new MockDependenciesInfoBuilder();
 
             builder.MockEvaluator.ReturnValues.Add("Reg1", true);
             builder.MockEvaluator.ReturnValues.Add("Reg2", true);

@@ -20,7 +20,7 @@ namespace DependencyChecker.UnitTests
         public void ShouldEvaluateToTrue()
         {
             var evaluator = new MultiCertificateCheckEvaluator();
-            Check check = new Check { Name = "Certficate", Value = "LocalMachine,My,CN=adatum!LocalMachine,My,CN=localhost" };
+            var check = new Check { Name = "Certficate", Value = "LocalMachine,My,CN=adatum!LocalMachine,My,CN=localhost" };
 
             bool evaluate = evaluator.Evaluate(check, null);
 
@@ -31,7 +31,7 @@ namespace DependencyChecker.UnitTests
         public void ShouldEvaluateToFalse()
         {
             var evaluator = new MultiCertificateCheckEvaluator();
-            Check check = new Check { Name = "Certficate", Value = "LocalMachine,My,CN=adatum!LocalMachine,My,CN=noexist" };
+            var check = new Check { Name = "Certficate", Value = "LocalMachine,My,CN=adatum!LocalMachine,My,CN=noexist" };
 
             bool evaluate = evaluator.Evaluate(check, null);
 

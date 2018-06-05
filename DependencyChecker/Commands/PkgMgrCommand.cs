@@ -37,7 +37,7 @@ namespace DependencyChecker.Commands
             ProcessStartInfo start = this.CreateProcessStartInfo();
             start.Arguments = dependency.Settings;
 
-            using (Process process = Process.Start(start))
+            using (var process = Process.Start(start))
             {
                 using (StreamReader reader = process.StandardOutput)
                 {

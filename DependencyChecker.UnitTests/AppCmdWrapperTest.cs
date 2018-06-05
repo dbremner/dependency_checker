@@ -19,7 +19,7 @@ namespace DependencyChecker.UnitTests
         [TestMethod]
         public void IsHttpsEnabledShouldReturnTrue()
         {
-            AppCmd appCmd = new AppCmd();
+            var appCmd = new AppCmd();
             Assert.IsTrue(appCmd.IsHttpsEnabled());
         }
     }

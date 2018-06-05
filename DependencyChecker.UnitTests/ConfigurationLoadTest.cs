@@ -21,7 +21,7 @@ namespace DependencyChecker.UnitTests
         {
             Configuration config = TestHelper.GetConfiguration();
 
-            DependenciesSection dependenciesSection = (DependenciesSection)config.GetSection(DependenciesSection.SectionName);
+            var dependenciesSection = (DependenciesSection)config.GetSection(DependenciesSection.SectionName);
             DependencyCheckCollection commonChecks = dependenciesSection.CommonChecks;
             Assert.AreEqual(6, commonChecks.Count);
         }
@@ -31,7 +31,7 @@ namespace DependencyChecker.UnitTests
         {
             Configuration config = TestHelper.GetConfiguration();
 
-            DependenciesSection dependenciesSection = (DependenciesSection)config.GetSection(DependenciesSection.SectionName);
+            var dependenciesSection = (DependenciesSection)config.GetSection(DependenciesSection.SectionName);
             Assert.IsNotNull(dependenciesSection);
             DependencyGroupCollection commonChecks = dependenciesSection.DependencyGroups;
             Assert.IsNotNull(commonChecks);
@@ -43,7 +43,7 @@ namespace DependencyChecker.UnitTests
         {
             Configuration config = TestHelper.GetConfiguration();
 
-            DependenciesSection dependenciesSection = (DependenciesSection)config.GetSection(DependenciesSection.SectionName);
+            var dependenciesSection = (DependenciesSection)config.GetSection(DependenciesSection.SectionName);
             Assert.AreEqual(2, dependenciesSection.DependencyGroups["MockOS"].Checks.Count);
         }
     }
