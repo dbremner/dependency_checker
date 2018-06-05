@@ -28,19 +28,21 @@ namespace DependencyChecker.CheckEvaluators.Helpers
             using (RegistryKey root = GetRoot(regPath, out finalRegPath))
             using (RegistryKey key = root.OpenSubKey(finalRegPath))
             {
-                if (key != null)
+                if (key == null)
                 {
-                    foreach (string subkey in key.GetSubKeyNames())
+                    return false;
+                }
+
+                foreach (string subkey in key.GetSubKeyNames())
+                {
+                    using (RegistryKey openSubKey = key.OpenSubKey(subkey))
                     {
-                        using (RegistryKey openSubKey = key.OpenSubKey(subkey))
+                        if (openSubKey != null)
                         {
-                            if (openSubKey != null)
+                            var value = openSubKey.GetValue(valueName) as string;
+                            if ((value != null) && value.StartsWith(desiredValue, StringComparison.OrdinalIgnoreCase))
                             {
-                                var value = openSubKey.GetValue(valueName) as string;
-                                if ((value != null) && value.StartsWith(desiredValue, StringComparison.OrdinalIgnoreCase))
-                                {
-                                    return true;
-                                }
+                                return true;
                             }
                         }
                     }
