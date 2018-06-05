@@ -25,11 +25,7 @@ namespace DependencyChecker.CheckEvaluators
                 throw new ArgumentNullException(nameof(check));
             }
             ManagementObjectSearcher searcher = WmiHelper.RunWmiQuery(check.Value);
-            if (searcher.Get().Count > 0)
-            {
-                return true;
-            }
-            return false;
+            return searcher.Get().Count > 0;
         }
     }
 }

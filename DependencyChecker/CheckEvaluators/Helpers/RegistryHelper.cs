@@ -67,11 +67,7 @@ namespace DependencyChecker.CheckEvaluators.Helpers
             using (RegistryKey root = GetRoot(regPath, out finalRegPath))
             using (RegistryKey key = root.OpenSubKey(finalRegPath))
             {
-                if (key != null)
-                {
-                    return true;
-                }
-                return false;
+                return key != null;
             }
         }
 
@@ -81,11 +77,7 @@ namespace DependencyChecker.CheckEvaluators.Helpers
             using (RegistryKey root = GetRoot(regPath, out finalRegPath))
             using (RegistryKey key = root.OpenSubKey(finalRegPath))
             {
-                if (key?.GetValue(valueName) != null)
-                {
-                    return true;
-                }
-                return false;
+                return key?.GetValue(valueName) != null;
             }
         }
 
