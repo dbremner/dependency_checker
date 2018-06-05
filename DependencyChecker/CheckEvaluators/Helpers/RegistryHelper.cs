@@ -23,8 +23,7 @@ namespace DependencyChecker.CheckEvaluators.Helpers
 
         public static bool IsInKey(string regPath, string valueName, string desiredValue)
         {
-            string finalRegPath;
-            using (RegistryKey root = GetRoot(regPath, out finalRegPath))
+            using (RegistryKey root = GetRoot(regPath, out string finalRegPath))
             using (RegistryKey key = root.OpenSubKey(finalRegPath))
             {
                 if (key == null)
@@ -49,8 +48,7 @@ namespace DependencyChecker.CheckEvaluators.Helpers
 
         public static bool IsValueAt(string regPath, string valueName, string desiredValue)
         {
-            string finalRegPath;
-            using (RegistryKey root = GetRoot(regPath, out finalRegPath))
+            using (RegistryKey root = GetRoot(regPath, out string finalRegPath))
             using (RegistryKey key = root.OpenSubKey(finalRegPath))
             {
                 if (key != null)
@@ -63,8 +61,7 @@ namespace DependencyChecker.CheckEvaluators.Helpers
 
         public static bool KeyExists(string regPath)
         {
-            string finalRegPath;
-            using (RegistryKey root = GetRoot(regPath, out finalRegPath))
+            using (RegistryKey root = GetRoot(regPath, out string finalRegPath))
             using (RegistryKey key = root.OpenSubKey(finalRegPath))
             {
                 return key != null;
@@ -73,8 +70,7 @@ namespace DependencyChecker.CheckEvaluators.Helpers
 
         public static bool ValueExists(string regPath, string valueName)
         {
-            string finalRegPath;
-            using (RegistryKey root = GetRoot(regPath, out finalRegPath))
+            using (RegistryKey root = GetRoot(regPath, out string finalRegPath))
             using (RegistryKey key = root.OpenSubKey(finalRegPath))
             {
                 return key?.GetValue(valueName) != null;
@@ -83,8 +79,7 @@ namespace DependencyChecker.CheckEvaluators.Helpers
 
         public static bool AddValue(string regPath, string valueName, string value)
         {
-            string finalRegPath;
-            using (RegistryKey root = GetRoot(regPath, out finalRegPath))
+            using (RegistryKey root = GetRoot(regPath, out string finalRegPath))
             {
                 RegistryKey key = root.CreateSubKey(finalRegPath);
                 if (key != null)

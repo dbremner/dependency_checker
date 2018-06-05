@@ -39,10 +39,7 @@ namespace DependencyChecker.Commands
             var certs = dependency.Settings.Split('!');
             foreach (var cert in certs)
             {
-                string certFile;
-                string storeName;
-                string password;
-                ExtractCertParameters(cert, out certFile, out storeName, out password);
+                ExtractCertParameters(cert, out string certFile, out string storeName, out string password);
 
                 if (storeName == @"AuthRoot")
                 {

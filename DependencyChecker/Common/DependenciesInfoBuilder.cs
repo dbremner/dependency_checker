@@ -127,8 +127,7 @@ namespace DependencyChecker.Common
 
         private static bool TryGetOsBuildNumber(DependenciesSection configSection, ref int currentOsBuild)
         {
-            int minimumOsBuild;
-            if (!int.TryParse(configSection.MinimumRequirements.MinimumOsBuild, out minimumOsBuild))
+            if (!int.TryParse(configSection.MinimumRequirements.MinimumOsBuild, out int minimumOsBuild))
             {
                 throw new ConfigurationErrorsException("MinimumOSBuild property of MinimumRequirements element is not in correct format. Expected integer");
             }

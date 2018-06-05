@@ -28,10 +28,8 @@ namespace DependencyChecker.CheckEvaluators
             {
                 throw new ArgumentNullException(nameof(check));
             }
-            string subject;
-            string storeName;
-            StoreLocation location;
-            ExtractCertParameters(check.Value, out subject, out storeName, out location);
+
+            ExtractCertParameters(check.Value, out string subject, out string storeName, out StoreLocation location);
 
             var certificate = CertificateCommon.GetCertificate(subject, storeName, location);
             if (certificate == null)
