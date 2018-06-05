@@ -7,7 +7,6 @@
 // Microsoft patterns & practices license (http://dependencychecker.codeplex.com/license)
 //===============================================================================
 
-
 using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;

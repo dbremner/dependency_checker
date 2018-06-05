@@ -7,7 +7,6 @@
 // Microsoft patterns & practices license (http://dependencychecker.codeplex.com/license)
 //===============================================================================
 
-
 namespace DependencyChecker
 {
     using System.Windows.Forms;

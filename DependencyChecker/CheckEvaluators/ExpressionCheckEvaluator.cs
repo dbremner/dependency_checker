@@ -7,7 +7,6 @@
 // Microsoft patterns & practices license (http://dependencychecker.codeplex.com/license)
 //===============================================================================
 
-
 using DependencyChecker.CheckEvaluators.Expressions;
 using DependencyChecker.Common;
 

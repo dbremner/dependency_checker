@@ -204,7 +204,6 @@ namespace DependencyChecker.SystemIntegration
 
         protected void ExecuteSqlcommand(string sqlCommandText, string targetDb = null)
         {
-
             var connectionString = GetSqlConnectionString(aliasName, string.IsNullOrEmpty(targetDb) ? dbName : targetDb);
 
             using (var connection = new SqlConnection(connectionString))

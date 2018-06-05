@@ -7,7 +7,6 @@
 // Microsoft patterns & practices license (http://dependencychecker.codeplex.com/license)
 //===============================================================================
 
-
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -123,6 +122,5 @@ namespace DependencyChecker.SystemIntegration
                 }
             }
         }
-
     }
 }
