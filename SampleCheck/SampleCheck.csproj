@@ -66,9 +66,16 @@
     <Content Include="SqlScripts\create_objects_DepCheckSampleDb.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="packages.config" />
     <None Include="SqlScripts\create_DepCheckSampleDb.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Roslynator.Analyzers.1.8.0\analyzers\dotnet\cs\Roslynator.Common.dll" />
+    <Analyzer Include="..\packages\Roslynator.Analyzers.1.8.0\analyzers\dotnet\cs\Roslynator.Core.dll" />
+    <Analyzer Include="..\packages\Roslynator.Analyzers.1.8.0\analyzers\dotnet\cs\Roslynator.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Roslynator.Analyzers.1.8.0\analyzers\dotnet\cs\Roslynator.Workspaces.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
