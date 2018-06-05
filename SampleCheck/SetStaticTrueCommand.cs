@@ -14,10 +14,7 @@ namespace SampleCheck
 {
     public class SetStaticTrueCommand : IDependencySetupCommand
     {
-        public SetStaticTrueCommand()
-        {
-            Completed = false;
-        }
+        public SetStaticTrueCommand() => Completed = false;
 
         public bool Completed { get; set; }
 
