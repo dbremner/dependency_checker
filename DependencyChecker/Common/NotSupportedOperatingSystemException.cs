@@ -19,6 +19,6 @@ namespace DependencyChecker.Common
             this.OsBuild = osBuild;
         }
 
-        public int OsBuild { get; set; }
+        public int OsBuild { get; }
     }
 }

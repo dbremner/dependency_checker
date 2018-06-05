@@ -25,9 +25,9 @@ namespace DependencyChecker.CheckEvaluators.Expressions
             this.Right = right;
         }
 
-        public PropExpression Left { get; set; }
+        public PropExpression Left { get; }
 
-        public PropExpression Right { get; set; }
+        public PropExpression Right { get; }
     }
 
     [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed. Suppression is OK here.")]
@@ -38,7 +38,7 @@ namespace DependencyChecker.CheckEvaluators.Expressions
             this.Inner = inner;
         }
 
-        public PropExpression Inner { get; set; }
+        public PropExpression Inner { get; }
     }
 
     [SuppressMessage("Microsoft.StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleClass", Justification = "Reviewed. Suppression is OK here.")]
@@ -49,6 +49,6 @@ namespace DependencyChecker.CheckEvaluators.Expressions
             this.Name = name;
         }
 
-        public string Name { get; set; }
+        public string Name { get; }
     }
 }

@@ -17,8 +17,8 @@ namespace DependencyChecker.CheckEvaluators.Expressions
             this.Right = right;
         }
 
-        public PropExpression Left { get; set; }
+        public PropExpression Left { get; }
 
-        public PropExpression Right { get; set; }
+        public PropExpression Right { get; }
     }
 }
