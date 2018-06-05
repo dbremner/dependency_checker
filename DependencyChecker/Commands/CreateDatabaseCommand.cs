@@ -16,10 +16,7 @@ namespace DependencyChecker.Commands
 {
     public class CreateDatabaseCommand : IDependencySetupCommand
     {
-        public CreateDatabaseCommand()
-        {
-            Completed = false;
-        }
+        public CreateDatabaseCommand() => Completed = false;
 
         public bool Completed { get; private set; }
 

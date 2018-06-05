@@ -15,10 +15,7 @@ namespace DependencyChecker
     {
         private int counter = 0;
 
-        public InstallingDependency()
-        {
-            InitializeComponent();
-        }
+        public InstallingDependency() => InitializeComponent();
 
         public void ShowProgress()
         {

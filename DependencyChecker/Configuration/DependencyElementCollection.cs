@@ -13,10 +13,7 @@ namespace DependencyChecker.Configuration
 
     public class DependencyElementCollection : ConfigurationElementCollection
     {
-        public DependencyElementCollection()
-        {
-            AddElementName = "dependency";
-        }
+        public DependencyElementCollection() => AddElementName = "dependency";
 
         public override ConfigurationElementCollectionType CollectionType
         {

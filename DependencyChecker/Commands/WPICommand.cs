@@ -21,10 +21,7 @@ namespace DependencyChecker.Commands
         private readonly InstallManager installManager;
         private bool iisComponent;
 
-        public WpiCommand()
-        {
-            installManager = new InstallManager();
-        }
+        public WpiCommand() => installManager = new InstallManager();
 
         public bool Completed { get; private set; }
 

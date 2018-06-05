@@ -13,10 +13,7 @@ namespace DependencyChecker.Configuration
 
     public class DependencyCheckCollection : ConfigurationElementCollection
     {
-        public DependencyCheckCollection()
-        {
-            AddElementName = "check";
-        }
+        public DependencyCheckCollection() => AddElementName = "check";
 
         public new DependencyCheck this[string name]
         {

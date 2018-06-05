@@ -13,10 +13,7 @@ namespace DependencyChecker
 
     public partial class WorkingSplash : Form
     {
-        public WorkingSplash()
-        {
-            InitializeComponent();
-        }
+        public WorkingSplash() => InitializeComponent();
 
         public int MaxDependencies
         {

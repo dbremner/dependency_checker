@@ -15,10 +15,7 @@ namespace DependencyChecker.Commands
 {
     public class RegisterAspnetCommand : IDependencySetupCommand
     {
-        public RegisterAspnetCommand()
-        {
-            Completed = false;
-        }
+        public RegisterAspnetCommand() => Completed = false;
 
         public bool Completed
         {

@@ -20,10 +20,8 @@ namespace DependencyChecker.Common
     {
         private readonly ProductManager productManager;
 
-        public DependenciesInfoBuilder(ProductManager productManager)
-        {
+        public DependenciesInfoBuilder(ProductManager productManager) =>
             this.productManager = productManager;
-        }
 
         public DependenciesInfo BuildDependenciesInfo(DependenciesSection configSection)
         {

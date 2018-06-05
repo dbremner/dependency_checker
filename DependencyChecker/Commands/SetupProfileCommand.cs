@@ -14,10 +14,7 @@ namespace DependencyChecker.Commands
 {
     public class SetupProfileCommand : IDependencySetupCommand
     {
-        public SetupProfileCommand()
-        {
-            Completed = false;
-        }
+        public SetupProfileCommand() => Completed = false;
 
         public bool Completed { get; private set; }
 

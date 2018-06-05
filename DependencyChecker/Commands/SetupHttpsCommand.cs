@@ -14,10 +14,7 @@ namespace DependencyChecker.Commands
 {
     public class SetupHttpsCommand : IDependencySetupCommand
     {
-        public SetupHttpsCommand()
-        {
-            Completed = false;
-        }
+        public SetupHttpsCommand() => Completed = false;
 
         public bool Completed { get; private set; }
 

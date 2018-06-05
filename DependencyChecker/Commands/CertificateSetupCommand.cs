@@ -21,10 +21,7 @@ namespace DependencyChecker.Commands
 {
     public class CertificateSetupCommand : IDependencySetupCommand
     {
-        public CertificateSetupCommand()
-        {
-            Completed = false;
-        }
+        public CertificateSetupCommand() => Completed = false;
 
         public bool Completed { get; private set; }
 
