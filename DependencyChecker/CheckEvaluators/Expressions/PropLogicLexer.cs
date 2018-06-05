@@ -23,7 +23,7 @@ namespace DependencyChecker.CheckEvaluators.Expressions
             this.source = source;
             CurrentTokenType = LexerTokenType.NotStarted;
             CurrentTokenValue = null;
-            identifierRegex = new Regex("^[A-Za-z_][0-9A-Za-z_]*");
+            identifierRegex = new Regex("^[A-Za-z_][0-9A-Za-z_]*", RegexOptions.Compiled);
         }
 
         public LexerTokenType CurrentTokenType { get; private set; }
