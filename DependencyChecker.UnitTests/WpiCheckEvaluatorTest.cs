@@ -43,8 +43,7 @@ namespace DependencyChecker.UnitTests
         [TestMethod]
         public void ShouldEvaluateToFalseMySql()
         {
-            var evaluator = new WpiCheckEvaluator();
-            evaluator.ProductManager = productManager;
+            var evaluator = new WpiCheckEvaluator(productManager);
             var check = new Check { CheckType = "WPI", Value = "MySQL" };
 
             bool evaluate = evaluator.Evaluate(check, null);
@@ -55,8 +54,7 @@ namespace DependencyChecker.UnitTests
         [TestMethod]
         public void ShouldEvaluateToTrueWifRuntime()
         {
-            var evaluator = new WpiCheckEvaluator();
-            evaluator.ProductManager = productManager;
+            var evaluator = new WpiCheckEvaluator(productManager);
             var check = new Check { CheckType = "WPIRuntime", Value = "WIFRuntime" };
 
             bool evaluate = evaluator.Evaluate(check, null);
@@ -67,8 +65,7 @@ namespace DependencyChecker.UnitTests
         [TestMethod]
         public void ShouldEvaluateToTrueWifSdk()
         {
-            var evaluator = new WpiCheckEvaluator();
-            evaluator.ProductManager = productManager;
+            var evaluator = new WpiCheckEvaluator(productManager);
             var check = new Check { CheckType = "WPISDK", Value = "WIFSDK" };
 
             Assert.IsTrue(evaluator.Evaluate(check, null));
@@ -77,8 +74,7 @@ namespace DependencyChecker.UnitTests
         [TestMethod]
         public void ShouldEvaluateToTrueWCFHTTP()
         {
-            var evaluator = new WpiCheckEvaluator();
-            evaluator.ProductManager = productManager;
+            var evaluator = new WpiCheckEvaluator(productManager);
             var check = new Check { CheckType = "WCFHTTP", Value = "WCFHTTP" };
 
             Assert.IsTrue(evaluator.Evaluate(check, null));
@@ -87,8 +83,7 @@ namespace DependencyChecker.UnitTests
         [TestMethod]
         public void ShouldEvaluateToTrueIIS7CGCC()
         {
-            var evaluator = new WpiCheckEvaluator();
-            evaluator.ProductManager = productManager;
+            var evaluator = new WpiCheckEvaluator(productManager);
             var check = new Check { CheckType = "IIS7CGCC", Value = "IIS7CGCC" };
 
             Assert.IsTrue(evaluator.Evaluate(check, null));
@@ -97,8 +92,7 @@ namespace DependencyChecker.UnitTests
         [TestMethod]
         public void ShouldEvaluateToTrueWindowsAzureTools()
         {
-            var evaluator = new WpiCheckEvaluator();
-            evaluator.ProductManager = productManager;
+            var evaluator = new WpiCheckEvaluator(productManager);
             var check = new Check { CheckType = "WindowsAzureToolsVS2010", Value = "WindowsAzureToolsVS2010" };
 
             Assert.IsTrue(evaluator.Evaluate(check, null));

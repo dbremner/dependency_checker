@@ -16,6 +16,8 @@ namespace DependencyChecker.CheckEvaluators
 
     public class WpiCheckEvaluator : ICheckEvaluator, IRequiresProductManager
     {
+        public WpiCheckEvaluator(ProductManager productManager) => ProductManager = productManager;
+
         public ProductManager ProductManager { get; set; }
 
         public bool Evaluate(Check check, IEvaluationContext context)
